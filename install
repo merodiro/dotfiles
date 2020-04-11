@@ -12,4 +12,8 @@ cd "${BASEDIR}"
 git -C "${DOTBOT_DIR}" submodule sync --quiet --recursive
 git submodule update --init --recursive "${DOTBOT_DIR}"
 
+curl -L --proto '=https' --tlsv1.2 https://nixos.org/nix/install | sh
+. ~/.nix-profile/etc/profile.d/nix.sh
+nix-env -i exa
+
 "${BASEDIR}/${DOTBOT_DIR}/${DOTBOT_BIN}" -d "${BASEDIR}" -c "${CONFIG}" "${@}"

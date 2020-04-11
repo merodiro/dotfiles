@@ -4,5 +4,6 @@
     ~/.profile: profile
     ~/.bash_profile: bash_profile
     ~/.bashrc: bashrc
+    ~/.bash_aliases: bash_aliases
     ~/.bash_logout: bash_logout
     ~/.zshrc: zshrc
