@@ -117,3 +117,4 @@ PATH="$HOME/Android/Sdk/tools/bin:$PATH"
 PATH="$HOME/.local/bin/:$PATH"
 source $ZSH/oh-my-zsh.sh
 source ~/.bash_aliases
+source ~/.nix-profile/etc/profile.d/nix.sh
