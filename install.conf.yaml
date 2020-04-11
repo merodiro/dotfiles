@@ -5,7 +5,4 @@
     ~/.bash_profile: bash_profile
     ~/.bashrc: bashrc
     ~/.bash_logout: bash_logout
-    ~/.gitconfig: gitconfig
     ~/.zshrc: zshrc
-
-
