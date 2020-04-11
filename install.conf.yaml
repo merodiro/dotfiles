@@ -1,4 +1,4 @@
-- clean: ['~']
+- clean: ["~"]
 
 - link:
     ~/.profile: profile
@@ -7,3 +7,20 @@
     ~/.bash_aliases: bash_aliases
     ~/.bash_logout: bash_logout
     ~/.zshrc: zshrc
+
+    # Fish shell config files
+    ~/.config/fish/config.fish: fish/config.fish
+    ~/.config/fish/conf.d:
+      path: fish/conf.d/*.fish
+      glob: true
+      create: true
+    ~/.config/fish/functions:
+      path: fish/functions/*.fish
+      glob: true
+      create: true
+    ~/.config/omf: omf
+
+- defaults:
+    link:
+      create: true
+      relink: true
