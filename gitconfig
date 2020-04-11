@@ -1,8 +1,0 @@
-[user]
-	email = merodiro@gmail.com
-	name = Amr A.Mohammed
-	signingkey = 3FC133624C4A9B9D
-[gpg]
-	program = gpg
-[commit]
-	gpgsign = true
