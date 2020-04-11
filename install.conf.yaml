@@ -24,6 +24,3 @@
     link:
       create: true
       relink: true
-
-- cargo:
-    - exa
