@@ -11,11 +11,11 @@
     # Fish shell config files
     ~/.config/fish/config.fish: fish/config.fish
     ~/.config/fish/conf.d:
-      path: fish/conf.d/*.fish
+      path: fish/conf.d
       glob: true
       create: true
     ~/.config/fish/functions:
-      path: fish/functions/*.fish
+      path: fish/functions/
       glob: true
       create: true
     ~/.config/omf: omf
