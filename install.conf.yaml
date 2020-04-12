@@ -7,6 +7,8 @@
     ~/.bash_aliases: bash_aliases
     ~/.bash_logout: bash_logout
     ~/.zshrc: zshrc
+    ~/.vimrc: vimrc
+    ~/.config/nvim/init.vim: vimrc
 
     # Fish shell config files
     ~/.config/fish/config.fish: fish/config.fish
