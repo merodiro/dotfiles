@@ -1,1 +1,1 @@
-/home/amr/.local/share/omf/themes/agnoster/fish_prompt.fish
+~/.local/share/omf/themes/agnoster/fish_prompt.fish
