@@ -1,4 +1,4 @@
-- clean: ["~"]
+- clean: ["~", "~/.config"]
 
 - link:
     ~/.profile: profile
@@ -12,22 +12,10 @@
 
     # Fish shell config files
     ~/.config/fish/config.fish: fish/config.fish
-    ~/.config/fish/conf.d:
-      path: fish/conf.d
-      glob: true
-    ~/.config/fish/functions:
-      path: fish/functions/
-      glob: true
-    ~/.config/fish/completions:
-      path: fish/completions/
-      glob: true
-    ~/.config/omf: omf
+    ~/.config/fish/fishfile: fishfile
+    ~/.config/fish/conf.d: fish/conf.d
+    ~/.config/fish/functions: fish/functions/
+    ~/.config/fish/completions: fish/completions/
 
-    ~/.bin:
-      path: bin/
-      glob: true
+    ~/.bin: bin/
 
-- defaults:
-    link:
-      create: true
-      relink: true
