@@ -15,12 +15,17 @@
     ~/.config/fish/conf.d:
       path: fish/conf.d
       glob: true
-      create: true
     ~/.config/fish/functions:
       path: fish/functions/
       glob: true
-      create: true
+    ~/.config/fish/completions:
+      path: fish/completions/
+      glob: true
     ~/.config/omf: omf
+
+    ~/.bin:
+      path: bin/
+      glob: true
 
 - defaults:
     link:

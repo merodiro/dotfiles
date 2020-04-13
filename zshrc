@@ -115,5 +115,7 @@ PATH="$HOME/Android/Sdk/platform-tools:$PATH"
 PATH="$HOME/Android/Sdk/tools:$PATH"
 PATH="$HOME/Android/Sdk/tools/bin:$PATH"
 PATH="$HOME/.local/bin/:$PATH"
+PATH="$HOME/.bin:$PATH"
+
 source $ZSH/oh-my-zsh.sh
 source ~/.bash_aliases

@@ -12,6 +12,7 @@ EDITOR=nvim
 PATH="$PATH:$HOME/.config/composer/vendor/bin"
 PATH="$PATH:$HOME/.yarn/bin"
 PATH="$PATH:$HOME/.cargo/bin/"
+PATH="$PATH:$HOME/.bin"
 
 # Bash won't get SIGWINCH if another process is in the foreground.
 # Enable checkwinsize so that bash will check the terminal size when
