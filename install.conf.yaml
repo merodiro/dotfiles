@@ -12,7 +12,7 @@
 
     # Fish shell config files
     ~/.config/fish/config.fish: fish/config.fish
-    ~/.config/fish/fishfile: fishfile
+    ~/.config/fish/fishfile: fish/fishfile
     ~/.config/fish/conf.d: fish/conf.d
     ~/.config/fish/functions: fish/functions/
     ~/.config/fish/completions: fish/completions/
