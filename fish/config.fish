@@ -1,6 +1,7 @@
 source ~/.bash_aliases
 
 set --universal fish_user_paths $fish_user_paths ~/.bin
+set -gx EDITOR nvim
 
 if not functions -q fisher
     set -q XDG_CONFIG_HOME; or set XDG_CONFIG_HOME ~/.config
