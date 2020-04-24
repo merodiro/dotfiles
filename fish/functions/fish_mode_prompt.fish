@@ -1,4 +1,3 @@
+# Redefine fish_mode_prompt function as empty to hide fish-shell mode indicator
 function fish_mode_prompt
-	# Overriden by Spacefish fishshell theme
-	# To see vi mode in prompt add 'vi_mode' to SPACEFISH_PROMPT_ORDER
 end
