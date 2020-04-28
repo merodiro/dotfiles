@@ -64,7 +64,7 @@ Plug 'SirVer/ultisnips'
 Plug 'honza/vim-snippets'
 
 "" Color
-Plug 'arcticicestudio/nord-vim'
+Plug 'dracula/vim', { 'as': 'dracula' }
 
 "*****************************************************************************
 "" Custom bundles
@@ -161,7 +161,7 @@ set number
 set relativenumber
 
 let no_buffers_menu=1
-silent! colorscheme nord
+silent! colorscheme dracula
 
 set mousemodel=popup
 set t_Co=256

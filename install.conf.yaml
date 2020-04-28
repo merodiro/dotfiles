@@ -9,6 +9,7 @@
     ~/.zshrc: zshrc
     ~/.config/nvim/init.vim: nvim/init.vim
     ~/.tmux.conf: tmux.conf
+    ~/.config/alacritty: alacritty
     # Fish shell config files
     ~/.config/fish/config.fish: fish/config.fish
     ~/.config/fish/fishfile: fish/fishfile
@@ -17,4 +18,3 @@
     ~/.config/fish/completions: fish/completions/
 
     ~/.bin: bin/
-
