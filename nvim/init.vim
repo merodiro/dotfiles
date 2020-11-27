@@ -34,7 +34,6 @@ Plug 'sheerun/vim-polyglot'
 Plug 'tpope/vim-rhubarb' " required by fugitive to :Gbrowse
 Plug 'dense-analysis/ale'
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
-Plug 'evanleck/vim-svelte'
 
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
@@ -118,9 +117,6 @@ let g:ale_linters  = {}
 let g:ale_linter_aliases = {}
 let g:ale_fixers['javascript'] = ['eslint']
 let g:ale_linters['javascript'] = ['eslint']
-let g:ale_fixers['svelte'] = ['eslint', 'prettier', 'prettier_standard']
-let g:ale_linters['svelte'] = ['stylelint', 'eslint']
-let g:ale_linter_aliases['svelte'] = ['css', 'javascript']
 
 let g:ale_fix_on_save = 1
 
@@ -142,7 +138,6 @@ let g:coc_global_extensions = [
     \ 'coc-json',
     \ 'coc-yank',
     \ 'coc-prettier',
-    \ 'coc-svelte',
     \ 'coc-tailwindcss',
     \ 'coc-vimlsp',
     \]
