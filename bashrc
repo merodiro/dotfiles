@@ -31,3 +31,4 @@ export NVM_DIR="$HOME/.nvm"
 if [ -f ~/.bash_aliases ]; then
     . ~/.bash_aliases
 fi
+source "$HOME/.cargo/env"

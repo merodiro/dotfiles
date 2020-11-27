@@ -18,3 +18,9 @@
     ~/.config/fish/completions: fish/completions/
 
     ~/.bin: bin/
+
+
+- cargo:
+    - ripgrep
+    - exa
+    - bat

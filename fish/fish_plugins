@@ -3,3 +3,7 @@ oh-my-fish/theme-bobthefish
 oh-my-fish/plugin-composer
 jorgebucaran/fisher
 jorgebucaran/fish-nvm
+IlanCosman/tide
+matchai/spacefish
+acomagu/fish-async-prompt
+oh-my-fish/plugin-rustup

@@ -5,6 +5,8 @@ set -gx EDITOR nvim
 set -g theme_color_scheme "dracula"
 set -g theme_date_format "+%a %H:%M"
 
+set PATH $HOME/.cargo/bin $PATH
+
 if not functions -q fisher
     set -q XDG_CONFIG_HOME; or set XDG_CONFIG_HOME ~/.config
     curl https://git.io/fisher --create-dirs -sLo $XDG_CONFIG_HOME/fish/functions/fisher.fish
