@@ -10,8 +10,10 @@ if not functions -q fisher
     fish -c fisher
 end
 
+set -g -x FZF_DEFAULT_COMMAND 'rg --files --hidden --follow --glob "!.git/*" -j1'
 
-# auto start tmux when ssh 
+# auto start tmux when ssh
+# or use https://unix.stackexchange.com/questions/121807/how-to-use-booleans-in-fish-shell
 if status --is-login
     set PPID (echo (ps --pid %self -o ppid --no-headers) | xargs)
     if ps --pid $PPID | grep ssh
@@ -19,3 +21,4 @@ if status --is-login
         echo "tmux failed to start; using plain fish shell"
     end
 end
+
