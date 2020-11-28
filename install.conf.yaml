@@ -17,4 +17,5 @@
     ~/.config/fish/functions: fish/functions/
     ~/.config/fish/completions: fish/completions/
 
+    ~/.config/bat: bat
     ~/.bin: bin/
