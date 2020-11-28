@@ -1,6 +1,6 @@
 source ~/.bash_aliases
 
-set --universal fish_user_paths $fish_user_paths ~/.bin
+set --universal fish_user_paths $fish_user_paths ~/.bin ~/.cargo/bin
 set -gx EDITOR nvim
 set -g theme_color_scheme "dracula"
 set -g theme_date_format "+%a %H:%M"
