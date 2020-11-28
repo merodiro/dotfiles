@@ -13,6 +13,8 @@ PATH="$PATH:$HOME/.config/composer/vendor/bin"
 PATH="$PATH:$HOME/.yarn/bin"
 PATH="$PATH:$HOME/.cargo/bin/"
 PATH="$PATH:$HOME/.bin"
+PATH="$PATH:$HOME/.local/bin"
+
 
 # Bash won't get SIGWINCH if another process is in the foreground.
 # Enable checkwinsize so that bash will check the terminal size when
@@ -31,4 +33,5 @@ export NVM_DIR="$HOME/.nvm"
 if [ -f ~/.bash_aliases ]; then
     . ~/.bash_aliases
 fi
-source "$HOME/.cargo/env"
+
+[ -f ~/.fzf.bash ] && source ~/.fzf.bash

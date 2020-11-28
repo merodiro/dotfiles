@@ -18,7 +18,7 @@ extract () {
                 *.tar)      tar xf $arg       ;;
                 *.tbz2)     tar xjf $arg      ;;
                 *.tgz)      tar xzf $arg      ;;
-                *.zip)      unzip -d $arg        ;;
+                *.zip)      unzip $arg        ;;
                 *.Z)        uncompress $arg   ;;
                 *.rar)      rar x $arg        ;;  # 'rar' must to be installed
                 *.jar)      jar -xvf $arg     ;;  # 'jdk' must to be installed

@@ -119,3 +119,5 @@ PATH="$HOME/.bin:$PATH"
 
 source $ZSH/oh-my-zsh.sh
 source ~/.bash_aliases
+
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh

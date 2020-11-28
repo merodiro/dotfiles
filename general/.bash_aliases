@@ -6,7 +6,7 @@ alias ...='cd ../..'
 alias vim=nvim
 
 # Changing "ls" to "exa"
-alias ls='exa --color=always --group-directories-first'
+alias ls='exa --group-directories-first'
 alias la='ls -a'  # all files and dirs
 alias ll='ls -alF'  # long format
 alias lt='ls -aT' # tree listing
