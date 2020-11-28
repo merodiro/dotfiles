@@ -25,6 +25,7 @@ then
     echo "$green✅ gh already installed $white"
 else
     (
+        set -e
         echo "⏬ Installing gh"
         res=$(curl -s "https://api.github.com/repos/cli/cli/releases/latest")
         version=$(echo "$res" | tr '\r\n' ' ' | jq -r '.tag_name')
