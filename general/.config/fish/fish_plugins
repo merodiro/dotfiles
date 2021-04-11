@@ -1,5 +1,2 @@
-oh-my-fish/plugin-node
-oh-my-fish/theme-bobthefish
-oh-my-fish/plugin-composer
 jorgebucaran/fisher
-jorgebucaran/fish-nvm
+oh-my-fish/plugin-node
