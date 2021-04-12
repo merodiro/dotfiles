@@ -34,6 +34,7 @@ Plug 'sheerun/vim-polyglot'
 Plug 'tpope/vim-rhubarb' " required by fugitive to :Gbrowse
 Plug 'dense-analysis/ale'
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
+Plug 'haishanh/night-owl.vim'
 
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
@@ -74,8 +75,11 @@ set smartcase
 let g:gruvbox_invert_selection = 0
 set termguicolors
 set cursorline
+
 " colorscheme dracula
-colorscheme gruvbox
+" colorscheme gruvbox
+
+colorscheme night-owl
 
 " Search mappings: These will make it so that going to the next one in a
 " search will center on the line it's found in.
