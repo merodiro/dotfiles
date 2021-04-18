@@ -32,6 +32,7 @@ PATH="$HOME/.yarn/bin:$PATH"
 PATH="$HOME/go/bin:$PATH"
 PATH="$HOME/.local/bin/:$PATH"
 PATH="$HOME/.bin:$PATH"
+PATH="$HOME/.fnm:$PATH"
 
 eval "$(fnm env)"
 # eval "$(fnm completions --shell zsh)"
