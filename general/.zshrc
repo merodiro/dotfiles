@@ -35,7 +35,6 @@ PATH="$HOME/.bin:$PATH"
 PATH="$HOME/.fnm:$PATH"
 
 eval "$(fnm env)"
-# eval "$(fnm completions --shell zsh)"
 
 source ~/.bash_aliases
 
@@ -55,3 +54,5 @@ setopt APPEND_HISTORY
 setopt INC_APPEND_HISTORY
 # do not store duplications
 setopt HIST_IGNORE_DUPS
+
+fpath+=~/.zsh/.zfunc
