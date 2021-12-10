@@ -23,6 +23,7 @@ eval "$(starship init zsh)"
 
 antigen apply
 
+DENO_INSTALL="$HOME/.deno"
 
 ZSH_CACHE_DIR=$HOME/.cache/oh-my-zsh
 if [[ ! -d $ZSH_CACHE_DIR ]]; then
@@ -33,6 +34,8 @@ PATH="$HOME/go/bin:$PATH"
 PATH="$HOME/.local/bin/:$PATH"
 PATH="$HOME/.bin:$PATH"
 PATH="$HOME/.fnm:$PATH"
+PATH="$HOME/.cargo/bin:$PATH"
+PATH="$DENO_INSTALL/bin:$PATH"
 
 eval "$(fnm env)"
 
@@ -56,3 +59,15 @@ setopt INC_APPEND_HISTORY
 setopt HIST_IGNORE_DUPS
 
 fpath+=~/.zsh/.zfunc
+
+. "$HOME/.cargo/env"
+
+export WASMTIME_HOME="$HOME/.wasmtime"
+
+export PATH="$WASMTIME_HOME/bin:$PATH"
+# Bun completions
+[ -s "/home/amr/.bun/_bun" ] && source "/home/amr/.bun/_bun"
+
+# Bun
+export BUN_INSTALL="/home/amr/.bun"
+export PATH="$BUN_INSTALL/bin:$PATH"

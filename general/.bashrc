@@ -14,6 +14,7 @@ PATH="$PATH:$HOME/.yarn/bin"
 PATH="$PATH:$HOME/.cargo/bin/"
 PATH="$PATH:$HOME/.bin"
 PATH="$PATH:$HOME/.local/bin"
+PATH="$PATH:$HOME/.deno/bin"
 
 
 # Bash won't get SIGWINCH if another process is in the foreground.
@@ -38,3 +39,4 @@ fi
 
 
 eval "$(starship init bash)"
+. "$HOME/.cargo/env"
