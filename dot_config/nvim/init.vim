@@ -35,6 +35,8 @@ Plug 'tpope/vim-rhubarb' " required by fugitive to :Gbrowse
 Plug 'dense-analysis/ale'
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'haishanh/night-owl.vim'
+Plug 'alker0/chezmoi.vim'
+Plug 'Lilja/vim-chezmoi'
 
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
@@ -95,6 +97,9 @@ noremap <silent> <leader>sh :terminal<CR>
 tnoremap <Esc> <C-\><C-n>
 tnoremap <M-[> <Esc>
 tnoremap <C-v><Esc> <Esc>
+
+" chezmoi
+let g:chezmoi = "enabled"
 
 " airline
 let g:airline#extensions#tabline#enabled = 1
