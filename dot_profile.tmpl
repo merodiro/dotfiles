@@ -6,5 +6,6 @@
 . "$HOME/.cargo/env"
 
 {{ if (eq .chezmoi.os "darwin") -}}
-. "$HOME/.fig/shell/zshrc.post.zsh"
+# Fig post block. Keep at the bottom of this file.
+. "$HOME/.fig/shell/profile.post.bash"
 {{ end }}
