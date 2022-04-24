@@ -1,8 +1,6 @@
 {{ if (eq .chezmoi.os "darwin") -}}
-#### FIG ENV VARIABLES ####
-# Please make sure this block is at the start of this file.
-[ -s ~/.fig/shell/pre.sh ] && source ~/.fig/shell/pre.sh
-#### END FIG ENV VARIABLES ####
+# Fig pre block. Keep at the top of this file.
+. "$HOME/.fig/shell/zshrc.pre.zsh"
 {{ end }}
 source ~/.zsh/antigen.zsh
 
@@ -54,6 +52,7 @@ PATH="$HOME/.local/bin/:$PATH"
 PATH="$HOME/.bin:$PATH"
 PATH="$HOME/.fnm:$PATH"
 PATH="$HOME/.cargo/bin:$PATH"
+PATH="$HOME/.kit/bin:$PATH"
 PATH="$DENO_INSTALL/bin:$PATH"
 PATH="/usr/local/go/bin:$PATH"
 eval "$(fnm env)"
@@ -91,9 +90,11 @@ export PATH="$WASMTIME_HOME/bin:$PATH"
 export BUN_INSTALL="/home/amr/.bun"
 export PATH="$BUN_INSTALL/bin:$PATH"
 
+# bind up and down to history search
+bindkey '^[[A' history-substring-search-up
+bindkey '^[[B' history-substring-search-down
+
 {{ if (eq .chezmoi.os "darwin") -}}
-#### FIG ENV VARIABLES ####
-# Please make sure this block is at the end of this file.
-[ -s ~/.fig/fig.sh ] && source ~/.fig/fig.sh
-#### END FIG ENV VARIABLES ####
+# Fig post block. Keep at the bottom of this file.
+. "$HOME/.fig/shell/zshrc.post.zsh"
 {{ end }}

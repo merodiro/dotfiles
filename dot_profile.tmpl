@@ -1,15 +1,10 @@
 {{ if (eq .chezmoi.os "darwin") -}}
-#### FIG ENV VARIABLES ####
-# Please make sure this block is at the start of this file.
-[ -s ~/.fig/shell/pre.sh ] && source ~/.fig/shell/pre.sh
-#### END FIG ENV VARIABLES ####
+# Fig pre block. Keep at the top of this file.
+. "$HOME/.fig/shell/profile.pre.bash"
 {{ end }}
 
 . "$HOME/.cargo/env"
 
 {{ if (eq .chezmoi.os "darwin") -}}
-#### FIG ENV VARIABLES ####
-# Please make sure this block is at the end of this file.
-[ -s ~/.fig/fig.sh ] && source ~/.fig/fig.sh
-#### END FIG ENV VARIABLES ####
+. "$HOME/.fig/shell/zshrc.post.zsh"
 {{ end }}

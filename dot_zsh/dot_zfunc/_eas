@@ -1,0 +1,402 @@
+#compdef eas
+
+_eas () {
+  local _command_id=${words[2]}
+  local _cur=${words[CURRENT]}
+  local -a _command_flags=()
+
+  ## public cli commands & flags
+  local -a _all_commands=(
+"account\:login:log in with your Expo account"
+"account\:logout:log out"
+"account\:view:show the username you are logged in as"
+"analytics:display or change analytics settings"
+"branch\:create:create a branch"
+"branch\:delete:delete a branch"
+"branch\:list:list all branches"
+"branch\:rename:rename a branch"
+"branch\:view:view a branch"
+"build:start a build"
+"build\:cancel:cancel a build"
+"build\:configure:configure the project to support EAS Build"
+"build\:inspect:inspect the state of the project at specific build stages, useful for troubleshooting"
+"build\:list:list all builds for your project"
+"build\:view:view a build for your project"
+"channel\:create:create a channel"
+"channel\:edit:point a channel at a new branch"
+"channel\:list:list all channels"
+"channel\:view:view a channel"
+"config:display project configuration (app.json + eas.json)"
+"credentials:manage credentials"
+"device\:create:register new Apple Devices to use for internal distribution"
+"device\:delete:remove a registered device from your account"
+"device\:list:list all registered devices for your account"
+"device\:view:view a device for your project"
+"diagnostics:display environment info"
+"project\:info:information about the current project"
+"project\:init:create or link an EAS project"
+"secret\:create:create an environment secret on the current project or owner account"
+"secret\:delete:delete an environment secret by ID"
+"secret\:list:list environment secrets available for your current app"
+"submit:submit app binary to App Store and/or Play Store"
+"update:publish an update group"
+"update\:configure:configure the project to support EAS Update"
+"update\:delete:delete all the updates in an update group"
+"update\:list:view the recent updates for a branch"
+"update\:view:update group details"
+"webhook\:create:create a webhook"
+"webhook\:delete:delete a webhook"
+"webhook\:list:list webhooks"
+"webhook\:update:update a webhook"
+"webhook\:view:view a webhook"
+"autocomplete:display autocomplete installation instructions"
+"help:Display help for <%= config.bin %>."
+  )
+
+  _set_flags () {
+    case $_command_id in
+account:login)
+  _command_flags=(
+
+  )
+;;
+
+account:logout)
+  _command_flags=(
+
+  )
+;;
+
+account:view)
+  _command_flags=(
+
+  )
+;;
+
+analytics)
+  _command_flags=(
+
+  )
+;;
+
+branch:create)
+  _command_flags=(
+    "--json[return a json with the new branch ID and name.]"
+  )
+;;
+
+branch:delete)
+  _command_flags=(
+    "--json[return JSON with the edited branch's ID and name.]"
+  )
+;;
+
+branch:list)
+  _command_flags=(
+    "--json[return output as JSON]"
+  )
+;;
+
+branch:rename)
+  _command_flags=(
+    "--from=-[current name of the branch.]:"
+"--to=-[new name of the branch.]:"
+"--json[return a json with the edited branch's ID and name.]"
+  )
+;;
+
+branch:view)
+  _command_flags=(
+    "--json[return a json with the branch's ID name and recent update groups.]"
+  )
+;;
+
+build)
+  _command_flags=(
+    "--platform=-[]:"
+"--json[Enable JSON output, non-JSON messages will be printed to stderr]"
+"--profile=-[Name of the build profile from eas.json. Defaults to \\\"production\\\" if defined in eas.json.]:"
+"--non-interactive[Run command in non-interactive mode]"
+"--local[Run build locally \\[experimental\\]]"
+"--output=-[Output path for local build]:"
+"--wait[Wait for build(s) to complete]"
+"--clear-cache[Clear cache before the build]"
+"--auto-submit[Submit on build complete using the submit profile with the same name as the build profile]"
+"--auto-submit-with-profile=-[Submit on build complete using the submit profile with provided name]:"
+  )
+;;
+
+build:cancel)
+  _command_flags=(
+
+  )
+;;
+
+build:configure)
+  _command_flags=(
+    "--platform=-[Platform to configure]:"
+  )
+;;
+
+build:inspect)
+  _command_flags=(
+    "--platform=-[]:"
+"--profile=-[Name of the build profile from eas.json. Defaults to \\\"production\\\" if defined in eas.json.]:"
+"--stage=-[Stage of the build you want to inspect.]:"
+"--output=-[Output directory.]:"
+"--force[Delete OUTPUT_DIRECTORY if it already exists.]"
+"--verbose[]"
+  )
+;;
+
+build:list)
+  _command_flags=(
+    "--platform=-[]:"
+"--json[Enable JSON output, non-JSON messages will be printed to stderr]"
+"--status=-[]:"
+"--distribution=-[]:"
+"--channel=-[]:"
+"--appVersion=-[]:"
+"--appBuildVersion=-[]:"
+"--sdkVersion=-[]:"
+"--runtimeVersion=-[]:"
+"--appIdentifier=-[]:"
+"--buildProfile=-[]:"
+"--gitCommitHash=-[]:"
+"--limit=-[]:"
+  )
+;;
+
+build:view)
+  _command_flags=(
+    "--json[Enable JSON output, non-JSON messages will be printed to stderr]"
+  )
+;;
+
+channel:create)
+  _command_flags=(
+    "--json[print output as a JSON object with the new channel ID, name and branch mapping.]"
+  )
+;;
+
+channel:edit)
+  _command_flags=(
+    "--branch=-[Name of the branch to point to]:"
+"--json[Print output as a JSON object with the channel ID, name and branch mapping]"
+  )
+;;
+
+channel:list)
+  _command_flags=(
+    "--json[print output as a JSON object with the channel ID, name and branch mapping.]"
+  )
+;;
+
+channel:view)
+  _command_flags=(
+    "--json[print output as a JSON object with the channel ID, name and branch mapping.]"
+  )
+;;
+
+config)
+  _command_flags=(
+    "--platform=-[]:"
+"--profile=-[]:"
+  )
+;;
+
+credentials)
+  _command_flags=(
+
+  )
+;;
+
+device:create)
+  _command_flags=(
+
+  )
+;;
+
+device:delete)
+  _command_flags=(
+    "--apple-team-id=-[]:"
+"--udid=-[]:"
+  )
+;;
+
+device:list)
+  _command_flags=(
+    "--apple-team-id=-[]:"
+  )
+;;
+
+device:view)
+  _command_flags=(
+
+  )
+;;
+
+diagnostics)
+  _command_flags=(
+
+  )
+;;
+
+project:info)
+  _command_flags=(
+
+  )
+;;
+
+project:init)
+  _command_flags=(
+
+  )
+;;
+
+secret:create)
+  _command_flags=(
+    "--scope=-[Scope for the secret]:"
+"--name=-[Name of the secret]:"
+"--value=-[Value of the secret]:"
+"--force[Delete and recreate existing secrets]"
+  )
+;;
+
+secret:delete)
+  _command_flags=(
+    "--id=-[ID of the secret to delete]:"
+  )
+;;
+
+secret:list)
+  _command_flags=(
+
+  )
+;;
+
+submit)
+  _command_flags=(
+    "--platform=-[]:"
+"--profile=-[Name of the submit profile from eas.json. Defaults to \\\"production\\\" if defined in eas.json.]:"
+"--latest[Submit the latest build for specified platform]"
+"--id=-[ID of the build to submit]:"
+"--path=-[Path to the .apk/.aab/.ipa file]:"
+"--url=-[App archive url]:"
+"--verbose[Always print logs from Submission Service]"
+"--wait[Wait for submission to complete]"
+"--non-interactive[Run command in non-interactive mode]"
+  )
+;;
+
+update)
+  _command_flags=(
+    "--branch=-[Branch to publish the update group on]:"
+"--message=-[A short message describing the update]:"
+"--republish[Republish an update group]"
+"--group=-[Update group to republish]:"
+"--input-dir=-[Location of the bundle]:"
+"--skip-bundler[Skip running Expo CLI to bundle the app before publishing]"
+"--platform=-[]:"
+"--json[Enable JSON output, non-JSON messages will be printed to stderr]"
+"--auto[Use the current git branch and commit message for the EAS branch and update message]"
+"--private-key-path=-[File containing the PEM-encoded private key corresponding to the certificate in expo-updates' configuration. Defaults to a file named \\\"private-key.pem\\\" in the certificate's directory.]:"
+"--non-interactive[Run command in non-interactive mode]"
+  )
+;;
+
+update:configure)
+  _command_flags=(
+    "--platform=-[Platform to configure]:"
+  )
+;;
+
+update:delete)
+  _command_flags=(
+    "--json[Return a json with the group ID of the deleted updates.]"
+  )
+;;
+
+update:list)
+  _command_flags=(
+    "--branch=-[List all updates on this branch]:"
+"--all[List all updates associated with this project]"
+"--json[Return a json with all of the recent update groups.]"
+  )
+;;
+
+update:view)
+  _command_flags=(
+    "--json[Return a json with the updates belonging to the group.]"
+  )
+;;
+
+webhook:create)
+  _command_flags=(
+    "--event=-[Event type that triggers the webhook]:"
+"--url=-[Webhook URL]:"
+"--secret=-[Secret used to create a hash signature of the request payload, provided in the 'Expo-Signature' header.]:"
+  )
+;;
+
+webhook:delete)
+  _command_flags=(
+
+  )
+;;
+
+webhook:list)
+  _command_flags=(
+    "--event=-[Event type that triggers the webhook]:"
+  )
+;;
+
+webhook:update)
+  _command_flags=(
+    "--id=-[Webhook ID]:"
+"--event=-[Event type that triggers the webhook]:"
+"--url=-[Webhook URL]:"
+"--secret=-[Secret used to create a hash signature of the request payload, provided in the 'Expo-Signature' header.]:"
+  )
+;;
+
+webhook:view)
+  _command_flags=(
+
+  )
+;;
+
+autocomplete)
+  _command_flags=(
+    "--refresh-cache[Refresh cache (ignores displaying instructions)]"
+  )
+;;
+
+help)
+  _command_flags=(
+    "--nested-commands[Include all nested commands in the output.]"
+  )
+;;
+
+    esac
+  }
+  ## end public cli commands & flags
+
+  _complete_commands () {
+    _describe -t all-commands "all commands" _all_commands
+  }
+
+  if [ $CURRENT -gt 2 ]; then
+    if [[ "$_cur" == -* ]]; then
+      _set_flags
+    else
+      _path_files
+    fi
+  fi
+
+
+  _arguments -S '1: :_complete_commands' \
+                $_command_flags
+}
+
+_eas
