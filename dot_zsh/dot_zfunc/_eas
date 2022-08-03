@@ -8,8 +8,11 @@ _eas () {
   ## public cli commands & flags
   local -a _all_commands=(
 "account\:login:log in with your Expo account"
+"login:log in with your Expo account"
 "account\:logout:log out"
+"logout:log out"
 "account\:view:show the username you are logged in as"
+"whoami:show the username you are logged in as"
 "analytics:display or change analytics settings"
 "branch\:create:create a branch"
 "branch\:delete:delete a branch"
@@ -33,12 +36,16 @@ _eas () {
 "device\:list:list all registered devices for your account"
 "device\:view:view a device for your project"
 "diagnostics:display environment info"
+"metadata\:pull:generate the local store configuration from the app stores"
+"metadata\:push:sync the local store configuration to the app stores"
 "project\:info:information about the current project"
 "project\:init:create or link an EAS project"
+"init:create or link an EAS project"
 "secret\:create:create an environment secret on the current project or owner account"
 "secret\:delete:delete an environment secret by ID"
 "secret\:list:list environment secrets available for your current app"
 "submit:submit app binary to App Store and/or Play Store"
+"build\:submit:submit app binary to App Store and/or Play Store"
 "update:publish an update group"
 "update\:configure:configure the project to support EAS Update"
 "update\:delete:delete all the updates in an update group"
@@ -49,33 +56,51 @@ _eas () {
 "webhook\:list:list webhooks"
 "webhook\:update:update a webhook"
 "webhook\:view:view a webhook"
-"autocomplete:display autocomplete installation instructions"
 "help:Display help for <%= config.bin %>."
+"autocomplete:display autocomplete installation instructions"
   )
 
   _set_flags () {
     case $_command_id in
 account:login)
   _command_flags=(
+    
+  )
+;;
 
+login)
+  _command_flags=(
+    
   )
 ;;
 
 account:logout)
   _command_flags=(
+    
+  )
+;;
 
+logout)
+  _command_flags=(
+    
   )
 ;;
 
 account:view)
   _command_flags=(
+    
+  )
+;;
 
+whoami)
+  _command_flags=(
+    
   )
 ;;
 
 analytics)
   _command_flags=(
-
+    
   )
 ;;
 
@@ -93,7 +118,10 @@ branch:delete)
 
 branch:list)
   _command_flags=(
-    "--json[return output as JSON]"
+    "--offset=-[Start queries from specified index. Use for paginating results. Defaults to 0.]:"
+"--limit=-[The number of query items to list at once. The default value is 50 (the maximum is 100). Using a lower value may help increase command speed.]:"
+"--json[Enable JSON output, non-JSON messages will be printed to stderr.]"
+"--non-interactive[Run the command in non-interactive mode.]"
   )
 ;;
 
@@ -107,7 +135,10 @@ branch:rename)
 
 branch:view)
   _command_flags=(
-    "--json[return a json with the branch's ID name and recent update groups.]"
+    "--offset=-[Start queries from specified index. Use for paginating results. Defaults to 0.]:"
+"--limit=-[The number of query items to list at once. The default value is 50 (the maximum is 100). Using a lower value may help increase command speed.]:"
+"--json[Enable JSON output, non-JSON messages will be printed to stderr.]"
+"--non-interactive[Run the command in non-interactive mode.]"
   )
 ;;
 
@@ -123,12 +154,13 @@ build)
 "--clear-cache[Clear cache before the build]"
 "--auto-submit[Submit on build complete using the submit profile with the same name as the build profile]"
 "--auto-submit-with-profile=-[Submit on build complete using the submit profile with provided name]:"
+"--message=-[A short message describing the build]:"
   )
 ;;
 
 build:cancel)
   _command_flags=(
-
+    
   )
 ;;
 
@@ -207,13 +239,13 @@ config)
 
 credentials)
   _command_flags=(
-
+    
   )
 ;;
 
 device:create)
   _command_flags=(
-
+    
   )
 ;;
 
@@ -232,25 +264,43 @@ device:list)
 
 device:view)
   _command_flags=(
-
+    
   )
 ;;
 
 diagnostics)
   _command_flags=(
+    
+  )
+;;
 
+metadata:pull)
+  _command_flags=(
+    "--profile=-[Name of the submit profile from eas.json. Defaults to \\\"production\\\" if defined in eas.json.]:"
+  )
+;;
+
+metadata:push)
+  _command_flags=(
+    "--profile=-[Name of the submit profile from eas.json. Defaults to \\\"production\\\" if defined in eas.json.]:"
   )
 ;;
 
 project:info)
   _command_flags=(
-
+    
   )
 ;;
 
 project:init)
   _command_flags=(
+    
+  )
+;;
 
+init)
+  _command_flags=(
+    
   )
 ;;
 
@@ -271,11 +321,25 @@ secret:delete)
 
 secret:list)
   _command_flags=(
-
+    
   )
 ;;
 
 submit)
+  _command_flags=(
+    "--platform=-[]:"
+"--profile=-[Name of the submit profile from eas.json. Defaults to \\\"production\\\" if defined in eas.json.]:"
+"--latest[Submit the latest build for specified platform]"
+"--id=-[ID of the build to submit]:"
+"--path=-[Path to the .apk/.aab/.ipa file]:"
+"--url=-[App archive url]:"
+"--verbose[Always print logs from Submission Service]"
+"--wait[Wait for submission to complete]"
+"--non-interactive[Run command in non-interactive mode]"
+  )
+;;
+
+build:submit)
   _command_flags=(
     "--platform=-[]:"
 "--profile=-[Name of the submit profile from eas.json. Defaults to \\\"production\\\" if defined in eas.json.]:"
@@ -341,7 +405,7 @@ webhook:create)
 
 webhook:delete)
   _command_flags=(
-
+    
   )
 ;;
 
@@ -362,19 +426,19 @@ webhook:update)
 
 webhook:view)
   _command_flags=(
-
-  )
-;;
-
-autocomplete)
-  _command_flags=(
-    "--refresh-cache[Refresh cache (ignores displaying instructions)]"
+    
   )
 ;;
 
 help)
   _command_flags=(
     "--nested-commands[Include all nested commands in the output.]"
+  )
+;;
+
+autocomplete)
+  _command_flags=(
+    "--refresh-cache[Refresh cache (ignores displaying instructions)]"
   )
 ;;
 
