@@ -38,7 +38,8 @@ _arguments "${_arguments_options[@]}" \
 '--import-map=[Load import map file]:FILE:_files' \
 '-c+[Specify the configuration file]:FILE:_files' \
 '--config=[Specify the configuration file]:FILE:_files' \
-'--no-check=[Skip type checking modules]:NO_CHECK_TYPE: ' \
+'--no-check=[Skip type-checking modules]:NO_CHECK_TYPE: ' \
+'(--no-check)--check=[Type-check modules]:CHECK_TYPE: ' \
 '-r+[Reload source code cache (recompile TypeScript)]:CACHE_BLOCKLIST:_files' \
 '--reload=[Reload source code cache (recompile TypeScript)]:CACHE_BLOCKLIST:_files' \
 '--lock=[Check the specified lock file]:FILE:_files' \
@@ -58,6 +59,7 @@ _arguments "${_arguments_options[@]}" \
 '-L+[Set log level]: :(debug info)' \
 '--log-level=[Set log level]: :(debug info)' \
 '--no-remote[Do not resolve remote modules]' \
+'(-c --config)--no-config[Disable automatic loading of the configuration file.]' \
 '--lock-write[Write lock file (use with --lock)]' \
 '--allow-hrtime[Allow high resolution time measurement]' \
 '-A[Allow all permissions]' \
@@ -67,7 +69,7 @@ _arguments "${_arguments_options[@]}" \
 '--cached-only[Require that remote dependencies are already cached]' \
 '--enable-testing-features-do-not-use[INTERNAL: Enable internal features used during integration testing]' \
 '--compat[UNSTABLE: Node compatibility mode.]' \
-'--watch[UNSTABLE: Watch for file changes and restart automatically]' \
+'--watch[Watch for file changes and restart automatically]' \
 '--no-clear-screen[Do not clear terminal screen when under watch mode]' \
 '-h[Print help information]' \
 '--help[Print help information]' \
@@ -83,7 +85,8 @@ _arguments "${_arguments_options[@]}" \
 '--import-map=[Load import map file]:FILE:_files' \
 '-c+[Specify the configuration file]:FILE:_files' \
 '--config=[Specify the configuration file]:FILE:_files' \
-'--no-check=[Skip type checking modules]:NO_CHECK_TYPE: ' \
+'--no-check=[Skip type-checking modules]:NO_CHECK_TYPE: ' \
+'(--no-check)--check=[Type-check modules]:CHECK_TYPE: ' \
 '-r+[Reload source code cache (recompile TypeScript)]:CACHE_BLOCKLIST:_files' \
 '--reload=[Reload source code cache (recompile TypeScript)]:CACHE_BLOCKLIST:_files' \
 '--lock=[Check the specified lock file]:FILE:_files' \
@@ -91,8 +94,9 @@ _arguments "${_arguments_options[@]}" \
 '-L+[Set log level]: :(debug info)' \
 '--log-level=[Set log level]: :(debug info)' \
 '--no-remote[Do not resolve remote modules]' \
+'(-c --config)--no-config[Disable automatic loading of the configuration file.]' \
 '--lock-write[Write lock file (use with --lock)]' \
-'--watch[UNSTABLE: Watch for file changes and restart automatically]' \
+'--watch[Watch for file changes and restart automatically]' \
 '--no-clear-screen[Do not clear terminal screen when under watch mode]' \
 '-h[Print help information]' \
 '--help[Print help information]' \
@@ -108,7 +112,8 @@ _arguments "${_arguments_options[@]}" \
 '--import-map=[Load import map file]:FILE:_files' \
 '-c+[Specify the configuration file]:FILE:_files' \
 '--config=[Specify the configuration file]:FILE:_files' \
-'--no-check=[Skip type checking modules]:NO_CHECK_TYPE: ' \
+'--no-check=[Skip type-checking modules]:NO_CHECK_TYPE: ' \
+'(--no-check)--check=[Type-check modules]:CHECK_TYPE: ' \
 '-r+[Reload source code cache (recompile TypeScript)]:CACHE_BLOCKLIST:_files' \
 '--reload=[Reload source code cache (recompile TypeScript)]:CACHE_BLOCKLIST:_files' \
 '--lock=[Check the specified lock file]:FILE:_files' \
@@ -116,7 +121,31 @@ _arguments "${_arguments_options[@]}" \
 '-L+[Set log level]: :(debug info)' \
 '--log-level=[Set log level]: :(debug info)' \
 '--no-remote[Do not resolve remote modules]' \
+'(-c --config)--no-config[Disable automatic loading of the configuration file.]' \
 '--lock-write[Write lock file (use with --lock)]' \
+'-h[Print help information]' \
+'--help[Print help information]' \
+'--unstable[Enable unstable features and APIs]' \
+'-q[Suppress diagnostic output]' \
+'--quiet[Suppress diagnostic output]' \
+'*::file:_files' \
+&& ret=0
+;;
+(check)
+_arguments "${_arguments_options[@]}" \
+'--import-map=[Load import map file]:FILE:_files' \
+'-c+[Specify the configuration file]:FILE:_files' \
+'--config=[Specify the configuration file]:FILE:_files' \
+'-r+[Reload source code cache (recompile TypeScript)]:CACHE_BLOCKLIST:_files' \
+'--reload=[Reload source code cache (recompile TypeScript)]:CACHE_BLOCKLIST:_files' \
+'--lock=[Check the specified lock file]:FILE:_files' \
+'--cert=[Load certificate authority from PEM encoded file]:FILE:_files' \
+'-L+[Set log level]: :(debug info)' \
+'--log-level=[Set log level]: :(debug info)' \
+'--no-remote[Do not resolve remote modules]' \
+'(-c --config)--no-config[Disable automatic loading of the configuration file.]' \
+'--lock-write[Write lock file (use with --lock)]' \
+'--remote[Type-check all modules, including remote]' \
 '-h[Print help information]' \
 '--help[Print help information]' \
 '--unstable[Enable unstable features and APIs]' \
@@ -130,7 +159,8 @@ _arguments "${_arguments_options[@]}" \
 '--import-map=[Load import map file]:FILE:_files' \
 '-c+[Specify the configuration file]:FILE:_files' \
 '--config=[Specify the configuration file]:FILE:_files' \
-'--no-check=[Skip type checking modules]:NO_CHECK_TYPE: ' \
+'--no-check=[Skip type-checking modules]:NO_CHECK_TYPE: ' \
+'(--no-check)--check=[Type-check modules]:CHECK_TYPE: ' \
 '-r+[Reload source code cache (recompile TypeScript)]:CACHE_BLOCKLIST:_files' \
 '--reload=[Reload source code cache (recompile TypeScript)]:CACHE_BLOCKLIST:_files' \
 '--lock=[Check the specified lock file]:FILE:_files' \
@@ -151,6 +181,7 @@ _arguments "${_arguments_options[@]}" \
 '-L+[Set log level]: :(debug info)' \
 '--log-level=[Set log level]: :(debug info)' \
 '--no-remote[Do not resolve remote modules]' \
+'(-c --config)--no-config[Disable automatic loading of the configuration file.]' \
 '--lock-write[Write lock file (use with --lock)]' \
 '--allow-hrtime[Allow high resolution time measurement]' \
 '-A[Allow all permissions]' \
@@ -220,7 +251,8 @@ _arguments "${_arguments_options[@]}" \
 '--import-map=[Load import map file]:FILE:_files' \
 '-c+[Specify the configuration file]:FILE:_files' \
 '--config=[Specify the configuration file]:FILE:_files' \
-'--no-check=[Skip type checking modules]:NO_CHECK_TYPE: ' \
+'--no-check=[Skip type-checking modules]:NO_CHECK_TYPE: ' \
+'(--no-check)--check=[Type-check modules]:CHECK_TYPE: ' \
 '-r+[Reload source code cache (recompile TypeScript)]:CACHE_BLOCKLIST:_files' \
 '--reload=[Reload source code cache (recompile TypeScript)]:CACHE_BLOCKLIST:_files' \
 '--lock=[Check the specified lock file]:FILE:_files' \
@@ -234,6 +266,7 @@ _arguments "${_arguments_options[@]}" \
 '-L+[Set log level]: :(debug info)' \
 '--log-level=[Set log level]: :(debug info)' \
 '--no-remote[Do not resolve remote modules]' \
+'(-c --config)--no-config[Disable automatic loading of the configuration file.]' \
 '--lock-write[Write lock file (use with --lock)]' \
 '--cached-only[Require that remote dependencies are already cached]' \
 '--enable-testing-features-do-not-use[INTERNAL: Enable internal features used during integration testing]' \
@@ -261,8 +294,9 @@ _arguments "${_arguments_options[@]}" \
 '--options-prose-wrap=[Define how prose should be wrapped. Defaults to always.]: :(always never preserve)' \
 '-L+[Set log level]: :(debug info)' \
 '--log-level=[Set log level]: :(debug info)' \
+'(-c --config)--no-config[Disable automatic loading of the configuration file.]' \
 '--check[Check if the source files are formatted]' \
-'--watch[UNSTABLE: Watch for file changes and restart automatically]' \
+'--watch[Watch for file changes and restart automatically]' \
 '--no-clear-screen[Do not clear terminal screen when under watch mode]' \
 '--options-use-tabs[Use tabs instead of spaces for indentation. Defaults to false.]' \
 '--options-single-quote[Use single quotes. Defaults to false.]' \
@@ -280,10 +314,13 @@ _arguments "${_arguments_options[@]}" \
 '--reload=[Reload source code cache (recompile TypeScript)]:CACHE_BLOCKLIST:_files' \
 '--cert=[Load certificate authority from PEM encoded file]:FILE:_files' \
 '()--location=[Show files used for origin bound APIs like the Web Storage API when running a script with '\''--location=<HREF>'\'']:HREF:_urls' \
-'--no-check=[Skip type checking modules]:NO_CHECK_TYPE: ' \
+'--no-check=[Skip type-checking modules]:NO_CHECK_TYPE: ' \
+'-c+[Specify the configuration file]:FILE:_files' \
+'--config=[Specify the configuration file]:FILE:_files' \
 '--import-map=[Load import map file]:FILE:_files' \
 '-L+[Set log level]: :(debug info)' \
 '--log-level=[Set log level]: :(debug info)' \
+'(-c --config)--no-config[Disable automatic loading of the configuration file.]' \
 '--json[UNSTABLE: Outputs the information in JSON format]' \
 '-h[Print help information]' \
 '--help[Print help information]' \
@@ -298,7 +335,8 @@ _arguments "${_arguments_options[@]}" \
 '--import-map=[Load import map file]:FILE:_files' \
 '-c+[Specify the configuration file]:FILE:_files' \
 '--config=[Specify the configuration file]:FILE:_files' \
-'--no-check=[Skip type checking modules]:NO_CHECK_TYPE: ' \
+'--no-check=[Skip type-checking modules]:NO_CHECK_TYPE: ' \
+'(--no-check)--check=[Type-check modules]:CHECK_TYPE: ' \
 '-r+[Reload source code cache (recompile TypeScript)]:CACHE_BLOCKLIST:_files' \
 '--reload=[Reload source code cache (recompile TypeScript)]:CACHE_BLOCKLIST:_files' \
 '--lock=[Check the specified lock file]:FILE:_files' \
@@ -321,6 +359,7 @@ _arguments "${_arguments_options[@]}" \
 '-L+[Set log level]: :(debug info)' \
 '--log-level=[Set log level]: :(debug info)' \
 '--no-remote[Do not resolve remote modules]' \
+'(-c --config)--no-config[Disable automatic loading of the configuration file.]' \
 '--lock-write[Write lock file (use with --lock)]' \
 '--allow-hrtime[Allow high resolution time measurement]' \
 '-A[Allow all permissions]' \
@@ -375,8 +414,9 @@ _arguments "${_arguments_options[@]}" \
 '-L+[Set log level]: :(debug info)' \
 '--log-level=[Set log level]: :(debug info)' \
 '--rules[List available rules]' \
+'(-c --config)--no-config[Disable automatic loading of the configuration file.]' \
 '--json[Output lint result in JSON format]' \
-'--watch[UNSTABLE: Watch for file changes and restart automatically]' \
+'--watch[Watch for file changes and restart automatically]' \
 '--no-clear-screen[Do not clear terminal screen when under watch mode]' \
 '-h[Print help information]' \
 '--help[Print help information]' \
@@ -391,7 +431,8 @@ _arguments "${_arguments_options[@]}" \
 '--import-map=[Load import map file]:FILE:_files' \
 '-c+[Specify the configuration file]:FILE:_files' \
 '--config=[Specify the configuration file]:FILE:_files' \
-'--no-check=[Skip type checking modules]:NO_CHECK_TYPE: ' \
+'--no-check=[Skip type-checking modules]:NO_CHECK_TYPE: ' \
+'(--no-check)--check=[Type-check modules]:CHECK_TYPE: ' \
 '-r+[Reload source code cache (recompile TypeScript)]:CACHE_BLOCKLIST:_files' \
 '--reload=[Reload source code cache (recompile TypeScript)]:CACHE_BLOCKLIST:_files' \
 '--lock=[Check the specified lock file]:FILE:_files' \
@@ -401,11 +442,13 @@ _arguments "${_arguments_options[@]}" \
 '--location=[Value of '\''globalThis.location'\'' used by some web APIs]:HREF:_urls' \
 '--v8-flags=[Set V8 command line options]: : ' \
 '--seed=[Set the random number generator seed]:NUMBER: ' \
+'--eval-file=[Evaluates the provided file(s) as scripts when the REPL starts. Accepts file paths and URLs.]: :_files' \
 '--eval=[Evaluates the provided code when the REPL starts.]:code: ' \
 '--unsafely-ignore-certificate-errors=[DANGER: Disables verification of TLS certificates]:HOSTNAMES: ' \
 '-L+[Set log level]: :(debug info)' \
 '--log-level=[Set log level]: :(debug info)' \
 '--no-remote[Do not resolve remote modules]' \
+'(-c --config)--no-config[Disable automatic loading of the configuration file.]' \
 '--lock-write[Write lock file (use with --lock)]' \
 '--cached-only[Require that remote dependencies are already cached]' \
 '--enable-testing-features-do-not-use[INTERNAL: Enable internal features used during integration testing]' \
@@ -422,7 +465,8 @@ _arguments "${_arguments_options[@]}" \
 '--import-map=[Load import map file]:FILE:_files' \
 '-c+[Specify the configuration file]:FILE:_files' \
 '--config=[Specify the configuration file]:FILE:_files' \
-'--no-check=[Skip type checking modules]:NO_CHECK_TYPE: ' \
+'--no-check=[Skip type-checking modules]:NO_CHECK_TYPE: ' \
+'(--no-check)--check=[Type-check modules]:CHECK_TYPE: ' \
 '-r+[Reload source code cache (recompile TypeScript)]:CACHE_BLOCKLIST:_files' \
 '--reload=[Reload source code cache (recompile TypeScript)]:CACHE_BLOCKLIST:_files' \
 '--lock=[Check the specified lock file]:FILE:_files' \
@@ -439,10 +483,11 @@ _arguments "${_arguments_options[@]}" \
 '--location=[Value of '\''globalThis.location'\'' used by some web APIs]:HREF:_urls' \
 '--v8-flags=[Set V8 command line options]: : ' \
 '--seed=[Set the random number generator seed]:NUMBER: ' \
-'(--inspect --inspect-brk)--watch=[UNSTABLE: Watch for file changes and restart automatically]:FILES:_files' \
+'(--inspect --inspect-brk)--watch=[Watch for file changes and restart automatically]:FILES:_files' \
 '-L+[Set log level]: :(debug info)' \
 '--log-level=[Set log level]: :(debug info)' \
 '--no-remote[Do not resolve remote modules]' \
+'(-c --config)--no-config[Disable automatic loading of the configuration file.]' \
 '--lock-write[Write lock file (use with --lock)]' \
 '--allow-hrtime[Allow high resolution time measurement]' \
 '-A[Allow all permissions]' \
@@ -465,6 +510,7 @@ _arguments "${_arguments_options[@]}" \
 _arguments "${_arguments_options[@]}" \
 '-c+[Specify the configuration file]:FILE:_files' \
 '--config=[Specify the configuration file]:FILE:_files' \
+'--cwd=[Specify the directory to run the task in]:DIR:_files -/' \
 '-L+[Set log level]: :(debug info)' \
 '--log-level=[Set log level]: :(debug info)' \
 '-h[Print help information]' \
@@ -472,8 +518,7 @@ _arguments "${_arguments_options[@]}" \
 '--unstable[Enable unstable features and APIs]' \
 '-q[Suppress diagnostic output]' \
 '--quiet[Suppress diagnostic output]' \
-'::task -- Task to be executed:' \
-'*::task_args -- Additional arguments passed to the task:' \
+'*::task_name_and_args -- Task to be executed with any additional arguments passed to the task:' \
 && ret=0
 ;;
 (test)
@@ -481,7 +526,8 @@ _arguments "${_arguments_options[@]}" \
 '--import-map=[Load import map file]:FILE:_files' \
 '-c+[Specify the configuration file]:FILE:_files' \
 '--config=[Specify the configuration file]:FILE:_files' \
-'--no-check=[Skip type checking modules]:NO_CHECK_TYPE: ' \
+'--no-check=[Skip type-checking modules]:NO_CHECK_TYPE: ' \
+'(--no-check)--check=[Type-check modules]:CHECK_TYPE: ' \
 '-r+[Reload source code cache (recompile TypeScript)]:CACHE_BLOCKLIST:_files' \
 '--reload=[Reload source code cache (recompile TypeScript)]:CACHE_BLOCKLIST:_files' \
 '--lock=[Check the specified lock file]:FILE:_files' \
@@ -508,6 +554,7 @@ _arguments "${_arguments_options[@]}" \
 '-L+[Set log level]: :(debug info)' \
 '--log-level=[Set log level]: :(debug info)' \
 '--no-remote[Do not resolve remote modules]' \
+'(-c --config)--no-config[Disable automatic loading of the configuration file.]' \
 '--lock-write[Write lock file (use with --lock)]' \
 '--allow-hrtime[Allow high resolution time measurement]' \
 '-A[Allow all permissions]' \
@@ -519,9 +566,9 @@ _arguments "${_arguments_options[@]}" \
 '--compat[UNSTABLE: Node compatibility mode.]' \
 '--no-run[Cache test modules, but don'\''t run tests]' \
 '--trace-ops[Enable tracing of async ops. Useful when debugging leaking ops in test, but impacts test execution time.]' \
-'--doc[UNSTABLE: type check code blocks]' \
+'--doc[UNSTABLE: type-check code blocks]' \
 '--allow-none[Don'\''t return error code if no test files are found]' \
-'(--no-run --coverage)--watch[UNSTABLE: Watch for file changes and restart automatically]' \
+'(--no-run --coverage)--watch[Watch for file changes and restart automatically]' \
 '--no-clear-screen[Do not clear terminal screen when under watch mode]' \
 '-h[Print help information]' \
 '--help[Print help information]' \
@@ -575,6 +622,7 @@ _arguments "${_arguments_options[@]}" \
 '--log-level=[Set log level]: :(debug info)' \
 '-f[Forcefully overwrite conflicting files in existing output directory]' \
 '--force[Forcefully overwrite conflicting files in existing output directory]' \
+'(-c --config)--no-config[Disable automatic loading of the configuration file.]' \
 '-h[Print help information]' \
 '--help[Print help information]' \
 '--unstable[Enable unstable features and APIs]' \
@@ -604,6 +652,7 @@ _deno_commands() {
 'bench:Run benchmarks' \
 'bundle:Bundle module and dependencies into single file' \
 'cache:Cache the dependencies' \
+'check:Type-check the dependencies' \
 'compile:UNSTABLE: Compile the script into a self contained executable' \
 'completions:Generate shell completions' \
 'coverage:Print coverage reports' \
@@ -640,6 +689,11 @@ _deno__bundle_commands() {
 _deno__cache_commands() {
     local commands; commands=()
     _describe -t commands 'deno cache commands' commands "$@"
+}
+(( $+functions[_deno__check_commands] )) ||
+_deno__check_commands() {
+    local commands; commands=()
+    _describe -t commands 'deno check commands' commands "$@"
 }
 (( $+functions[_deno__compile_commands] )) ||
 _deno__compile_commands() {
