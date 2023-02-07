@@ -77,15 +77,17 @@ else
         set -e
         echo "⏬ Installing exa"
         res=$(gh api /repos/ogham/exa/releases/latest)
-        downloadLink=$(echo "$res" | tr '\r\n' ' ' | jq -r '.assets[] | select(.name | contains("linux-x86_64")).browser_download_url')
-        folderName=$(echo "$res" | tr '\r\n' ' ' | jq -r '.assets[] | select(.name | contains("linux-x86_64")).name[:-3]')
+        downloadLink=$(echo "$res" | tr '\r\n' ' ' | jq -r '.assets[] | select(.name | contains("linux-x86_64") and (contains("musl") | not)).browser_download_url')
+        folderName=$(echo "$res" | tr '\r\n' ' ' | jq -r '.assets[] | select(.name | contains("linux-x86_64") and (contains("musl") | not)).name[:-3]')
 
-        curl -sSL "https://raw.githubusercontent.com/ogham/exa/master/man/exa.1.md" -o ~/.local/share/man/man1/man.1
 
         curl -sSL "$downloadLink" -o exa.zip
         unzip -qo exa.zip
-        mv exa-linux-x86_64 ~/.local/bin/exa
+        mv bin/exa ~/.local/bin/exa
+        mv man/exa.1 ~/.local/share/man/man1/
+        mv man/exa_colors.5 ~/.local/share/man/man1/
         rm exa.zip
+        rm man bin completions -rf
 
         echo "$green✅ exa installed $white"
     )
@@ -101,7 +103,7 @@ else
     (
         set -e
         echo "⏬ Installing fzf"
-        
+
         downloadLink=$(gh api /repos/junegunn/fzf/releases/latest | jq -r '.assets[] | select(.name | contains("linux_amd64")).browser_download_url')
         curl -sSL $downloadLink | tar xzf -
         mv fzf ~/.local/bin/fzf
