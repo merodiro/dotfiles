@@ -17,13 +17,13 @@ _deno() {
     _arguments "${_arguments_options[@]}" \
 '-L+[Set log level]: :(debug info)' \
 '--log-level=[Set log level]: :(debug info)' \
-'-h[Print help information]' \
-'--help[Print help information]' \
-'-V[Print version information]' \
-'--version[Print version information]' \
 '--unstable[Enable unstable features and APIs]' \
 '-q[Suppress diagnostic output]' \
 '--quiet[Suppress diagnostic output]' \
+'-h[Print help (see more with '\''--help'\'')]' \
+'--help[Print help (see more with '\''--help'\'')]' \
+'-V[Print version]' \
+'--version[Print version]' \
 ":: :_deno_commands" \
 "*::: :->deno" \
 && ret=0
@@ -35,32 +35,38 @@ _deno() {
         case $line[1] in
             (bench)
 _arguments "${_arguments_options[@]}" \
+'--no-check=[Skip type-checking modules]' \
+'(--no-check)--check=[Type-check modules]' \
 '--import-map=[Load import map file]:FILE:_files' \
+'--node-modules-dir=[Creates a local node_modules folder]' \
 '-c+[Specify the configuration file]:FILE:_files' \
 '--config=[Specify the configuration file]:FILE:_files' \
-'--no-check=[Skip type-checking modules]:NO_CHECK_TYPE: ' \
-'(--no-check)--check=[Type-check modules]:CHECK_TYPE: ' \
-'-r+[Reload source code cache (recompile TypeScript)]:CACHE_BLOCKLIST:_files' \
-'--reload=[Reload source code cache (recompile TypeScript)]:CACHE_BLOCKLIST:_files' \
-'--lock=[Check the specified lock file]:FILE:_files' \
+'-r+[Reload source code cache (recompile TypeScript)]' \
+'--reload=[Reload source code cache (recompile TypeScript)]' \
+'--lock=[Check the specified lock file.
+
+If value is not provided, defaults to "deno.lock" in the current working directory.]' \
 '--cert=[Load certificate authority from PEM encoded file]:FILE:_files' \
-'--allow-read=[Allow file system read access]: :_files' \
-'--allow-write=[Allow file system write access]: :_files' \
-'--allow-net=[Allow network access]: : ' \
-'--unsafely-ignore-certificate-errors=[DANGER: Disables verification of TLS certificates]:HOSTNAMES: ' \
-'--allow-env=[Allow environment access]: : ' \
-'--allow-run=[Allow running subprocesses]: : ' \
-'--allow-ffi=[Allow loading dynamic libraries]: :_files' \
+'--allow-read=[Allow file system read access]' \
+'--allow-write=[Allow file system write access]' \
+'--allow-net=[Allow network access]' \
+'--unsafely-ignore-certificate-errors=[DANGER: Disables verification of TLS certificates]' \
+'--allow-env=[Allow environment access]' \
+'--allow-sys=[Allow access to system info]' \
+'--allow-run=[Allow running subprocesses]' \
+'--allow-ffi=[Allow loading dynamic libraries]' \
 '--location=[Value of '\''globalThis.location'\'' used by some web APIs]:HREF:_urls' \
-'--v8-flags=[Set V8 command line options]: : ' \
+'--v8-flags=[Set V8 command line options]' \
 '--seed=[Set the random number generator seed]:NUMBER: ' \
-'--ignore=[Ignore files]: : ' \
+'--ignore=[Ignore files]: :_files' \
 '--filter=[Run benchmarks with this string or pattern in the bench name]: : ' \
 '-L+[Set log level]: :(debug info)' \
 '--log-level=[Set log level]: :(debug info)' \
 '--no-remote[Do not resolve remote modules]' \
+'--no-npm[Do not resolve npm modules]' \
 '(-c --config)--no-config[Disable automatic loading of the configuration file.]' \
-'--lock-write[Write lock file (use with --lock)]' \
+'(--no-lock)--lock-write[Force overwriting the lock file.]' \
+'(--lock)--no-lock[Disable auto discovery of the lock file.]' \
 '--allow-hrtime[Allow high resolution time measurement]' \
 '-A[Allow all permissions]' \
 '--allow-all[Allow all permissions]' \
@@ -68,121 +74,145 @@ _arguments "${_arguments_options[@]}" \
 '--no-prompt[Always throw if required permission wasn'\''t passed]' \
 '--cached-only[Require that remote dependencies are already cached]' \
 '--enable-testing-features-do-not-use[INTERNAL: Enable internal features used during integration testing]' \
-'--compat[UNSTABLE: Node compatibility mode.]' \
+'--json[UNSTABLE: Output benchmark result in JSON format]' \
 '--watch[Watch for file changes and restart automatically]' \
 '--no-clear-screen[Do not clear terminal screen when under watch mode]' \
-'-h[Print help information]' \
-'--help[Print help information]' \
 '--unstable[Enable unstable features and APIs]' \
 '-q[Suppress diagnostic output]' \
 '--quiet[Suppress diagnostic output]' \
-'*::files -- List of file names to run:' \
-'*::script_arg -- Script arg:_files' \
+'-h[Print help (see more with '\''--help'\'')]' \
+'--help[Print help (see more with '\''--help'\'')]' \
+'*::files -- List of file names to run:_files' \
 && ret=0
 ;;
 (bundle)
 _arguments "${_arguments_options[@]}" \
+'--no-check=[Skip type-checking modules]' \
+'(--no-check)--check=[Type-check modules]' \
 '--import-map=[Load import map file]:FILE:_files' \
+'--node-modules-dir=[Creates a local node_modules folder]' \
 '-c+[Specify the configuration file]:FILE:_files' \
 '--config=[Specify the configuration file]:FILE:_files' \
-'--no-check=[Skip type-checking modules]:NO_CHECK_TYPE: ' \
-'(--no-check)--check=[Type-check modules]:CHECK_TYPE: ' \
-'-r+[Reload source code cache (recompile TypeScript)]:CACHE_BLOCKLIST:_files' \
-'--reload=[Reload source code cache (recompile TypeScript)]:CACHE_BLOCKLIST:_files' \
-'--lock=[Check the specified lock file]:FILE:_files' \
+'-r+[Reload source code cache (recompile TypeScript)]' \
+'--reload=[Reload source code cache (recompile TypeScript)]' \
+'--lock=[Check the specified lock file.
+
+If value is not provided, defaults to "deno.lock" in the current working directory.]' \
 '--cert=[Load certificate authority from PEM encoded file]:FILE:_files' \
+'--ext=[Set content type of the supplied file]: :(ts tsx js jsx)' \
 '-L+[Set log level]: :(debug info)' \
 '--log-level=[Set log level]: :(debug info)' \
 '--no-remote[Do not resolve remote modules]' \
+'--no-npm[Do not resolve npm modules]' \
 '(-c --config)--no-config[Disable automatic loading of the configuration file.]' \
-'--lock-write[Write lock file (use with --lock)]' \
+'(--no-lock)--lock-write[Force overwriting the lock file.]' \
+'(--lock)--no-lock[Disable auto discovery of the lock file.]' \
 '--watch[Watch for file changes and restart automatically]' \
 '--no-clear-screen[Do not clear terminal screen when under watch mode]' \
-'-h[Print help information]' \
-'--help[Print help information]' \
 '--unstable[Enable unstable features and APIs]' \
 '-q[Suppress diagnostic output]' \
 '--quiet[Suppress diagnostic output]' \
+'-h[Print help (see more with '\''--help'\'')]' \
+'--help[Print help (see more with '\''--help'\'')]' \
 ':source_file:_files' \
 '::out_file:_files' \
 && ret=0
 ;;
 (cache)
 _arguments "${_arguments_options[@]}" \
+'--no-check=[Skip type-checking modules]' \
+'(--no-check)--check=[Type-check modules]' \
 '--import-map=[Load import map file]:FILE:_files' \
+'--node-modules-dir=[Creates a local node_modules folder]' \
 '-c+[Specify the configuration file]:FILE:_files' \
 '--config=[Specify the configuration file]:FILE:_files' \
-'--no-check=[Skip type-checking modules]:NO_CHECK_TYPE: ' \
-'(--no-check)--check=[Type-check modules]:CHECK_TYPE: ' \
-'-r+[Reload source code cache (recompile TypeScript)]:CACHE_BLOCKLIST:_files' \
-'--reload=[Reload source code cache (recompile TypeScript)]:CACHE_BLOCKLIST:_files' \
-'--lock=[Check the specified lock file]:FILE:_files' \
+'-r+[Reload source code cache (recompile TypeScript)]' \
+'--reload=[Reload source code cache (recompile TypeScript)]' \
+'--lock=[Check the specified lock file.
+
+If value is not provided, defaults to "deno.lock" in the current working directory.]' \
 '--cert=[Load certificate authority from PEM encoded file]:FILE:_files' \
 '-L+[Set log level]: :(debug info)' \
 '--log-level=[Set log level]: :(debug info)' \
 '--no-remote[Do not resolve remote modules]' \
+'--no-npm[Do not resolve npm modules]' \
 '(-c --config)--no-config[Disable automatic loading of the configuration file.]' \
-'--lock-write[Write lock file (use with --lock)]' \
-'-h[Print help information]' \
-'--help[Print help information]' \
+'(--no-lock)--lock-write[Force overwriting the lock file.]' \
+'(--lock)--no-lock[Disable auto discovery of the lock file.]' \
 '--unstable[Enable unstable features and APIs]' \
 '-q[Suppress diagnostic output]' \
 '--quiet[Suppress diagnostic output]' \
+'-h[Print help (see more with '\''--help'\'')]' \
+'--help[Print help (see more with '\''--help'\'')]' \
 '*::file:_files' \
 && ret=0
 ;;
 (check)
 _arguments "${_arguments_options[@]}" \
 '--import-map=[Load import map file]:FILE:_files' \
+'--node-modules-dir=[Creates a local node_modules folder]' \
 '-c+[Specify the configuration file]:FILE:_files' \
 '--config=[Specify the configuration file]:FILE:_files' \
-'-r+[Reload source code cache (recompile TypeScript)]:CACHE_BLOCKLIST:_files' \
-'--reload=[Reload source code cache (recompile TypeScript)]:CACHE_BLOCKLIST:_files' \
-'--lock=[Check the specified lock file]:FILE:_files' \
+'-r+[Reload source code cache (recompile TypeScript)]' \
+'--reload=[Reload source code cache (recompile TypeScript)]' \
+'--lock=[Check the specified lock file.
+
+If value is not provided, defaults to "deno.lock" in the current working directory.]' \
 '--cert=[Load certificate authority from PEM encoded file]:FILE:_files' \
 '-L+[Set log level]: :(debug info)' \
 '--log-level=[Set log level]: :(debug info)' \
 '--no-remote[Do not resolve remote modules]' \
+'--no-npm[Do not resolve npm modules]' \
 '(-c --config)--no-config[Disable automatic loading of the configuration file.]' \
-'--lock-write[Write lock file (use with --lock)]' \
-'--remote[Type-check all modules, including remote]' \
-'-h[Print help information]' \
-'--help[Print help information]' \
+'(--no-lock)--lock-write[Force overwriting the lock file.]' \
+'(--lock)--no-lock[Disable auto discovery of the lock file.]' \
+'(--no-remote)--all[Type-check all code, including remote modules and npm packages]' \
+'(--no-remote)--remote[Type-check all modules, including remote]' \
 '--unstable[Enable unstable features and APIs]' \
 '-q[Suppress diagnostic output]' \
 '--quiet[Suppress diagnostic output]' \
+'-h[Print help (see more with '\''--help'\'')]' \
+'--help[Print help (see more with '\''--help'\'')]' \
 '*::file:_files' \
 && ret=0
 ;;
 (compile)
 _arguments "${_arguments_options[@]}" \
+'--no-check=[Skip type-checking modules]' \
+'(--no-check)--check=[Type-check modules]' \
 '--import-map=[Load import map file]:FILE:_files' \
+'--node-modules-dir=[Creates a local node_modules folder]' \
 '-c+[Specify the configuration file]:FILE:_files' \
 '--config=[Specify the configuration file]:FILE:_files' \
-'--no-check=[Skip type-checking modules]:NO_CHECK_TYPE: ' \
-'(--no-check)--check=[Type-check modules]:CHECK_TYPE: ' \
-'-r+[Reload source code cache (recompile TypeScript)]:CACHE_BLOCKLIST:_files' \
-'--reload=[Reload source code cache (recompile TypeScript)]:CACHE_BLOCKLIST:_files' \
-'--lock=[Check the specified lock file]:FILE:_files' \
+'-r+[Reload source code cache (recompile TypeScript)]' \
+'--reload=[Reload source code cache (recompile TypeScript)]' \
+'--lock=[Check the specified lock file.
+
+If value is not provided, defaults to "deno.lock" in the current working directory.]' \
 '--cert=[Load certificate authority from PEM encoded file]:FILE:_files' \
-'--allow-read=[Allow file system read access]: :_files' \
-'--allow-write=[Allow file system write access]: :_files' \
-'--allow-net=[Allow network access]: : ' \
-'--unsafely-ignore-certificate-errors=[DANGER: Disables verification of TLS certificates]:HOSTNAMES: ' \
-'--allow-env=[Allow environment access]: : ' \
-'--allow-run=[Allow running subprocesses]: : ' \
-'--allow-ffi=[Allow loading dynamic libraries]: :_files' \
+'--allow-read=[Allow file system read access]' \
+'--allow-write=[Allow file system write access]' \
+'--allow-net=[Allow network access]' \
+'--unsafely-ignore-certificate-errors=[DANGER: Disables verification of TLS certificates]' \
+'--allow-env=[Allow environment access]' \
+'--allow-sys=[Allow access to system info]' \
+'--allow-run=[Allow running subprocesses]' \
+'--allow-ffi=[Allow loading dynamic libraries]' \
 '--location=[Value of '\''globalThis.location'\'' used by some web APIs]:HREF:_urls' \
-'--v8-flags=[Set V8 command line options]: : ' \
+'--v8-flags=[Set V8 command line options]' \
 '--seed=[Set the random number generator seed]:NUMBER: ' \
+'*--include=[UNSTABLE: Additional module to include in the module graph]: :_files' \
 '-o+[Output file (defaults to $PWD/<inferred-name>)]: :_files' \
 '--output=[Output file (defaults to $PWD/<inferred-name>)]: :_files' \
 '--target=[Target OS architecture]: :(x86_64-unknown-linux-gnu x86_64-pc-windows-msvc x86_64-apple-darwin aarch64-apple-darwin)' \
+'--ext=[Set content type of the supplied file]: :(ts tsx js jsx)' \
 '-L+[Set log level]: :(debug info)' \
 '--log-level=[Set log level]: :(debug info)' \
 '--no-remote[Do not resolve remote modules]' \
+'--no-npm[Do not resolve npm modules]' \
 '(-c --config)--no-config[Disable automatic loading of the configuration file.]' \
-'--lock-write[Write lock file (use with --lock)]' \
+'(--no-lock)--lock-write[Force overwriting the lock file.]' \
+'(--lock)--no-lock[Disable auto discovery of the lock file.]' \
 '--allow-hrtime[Allow high resolution time measurement]' \
 '-A[Allow all permissions]' \
 '--allow-all[Allow all permissions]' \
@@ -190,12 +220,11 @@ _arguments "${_arguments_options[@]}" \
 '--no-prompt[Always throw if required permission wasn'\''t passed]' \
 '--cached-only[Require that remote dependencies are already cached]' \
 '--enable-testing-features-do-not-use[INTERNAL: Enable internal features used during integration testing]' \
-'--compat[UNSTABLE: Node compatibility mode.]' \
-'-h[Print help information]' \
-'--help[Print help information]' \
 '--unstable[Enable unstable features and APIs]' \
 '-q[Suppress diagnostic output]' \
 '--quiet[Suppress diagnostic output]' \
+'-h[Print help (see more with '\''--help'\'')]' \
+'--help[Print help (see more with '\''--help'\'')]' \
 '*::script_arg -- Script arg:_files' \
 && ret=0
 ;;
@@ -203,11 +232,11 @@ _arguments "${_arguments_options[@]}" \
 _arguments "${_arguments_options[@]}" \
 '-L+[Set log level]: :(debug info)' \
 '--log-level=[Set log level]: :(debug info)' \
-'-h[Print help information]' \
-'--help[Print help information]' \
 '--unstable[Enable unstable features and APIs]' \
 '-q[Suppress diagnostic output]' \
 '--quiet[Suppress diagnostic output]' \
+'-h[Print help (see more with '\''--help'\'')]' \
+'--help[Print help (see more with '\''--help'\'')]' \
 ':shell:(bash fish powershell zsh fig)' \
 && ret=0
 ;;
@@ -220,66 +249,77 @@ _arguments "${_arguments_options[@]}" \
 '-L+[Set log level]: :(debug info)' \
 '--log-level=[Set log level]: :(debug info)' \
 '--lcov[Output coverage report in lcov format]' \
-'-h[Print help information]' \
-'--help[Print help information]' \
 '--unstable[Enable unstable features and APIs]' \
 '-q[Suppress diagnostic output]' \
 '--quiet[Suppress diagnostic output]' \
+'-h[Print help (see more with '\''--help'\'')]' \
+'--help[Print help (see more with '\''--help'\'')]' \
 '*::files:_files' \
 && ret=0
 ;;
 (doc)
 _arguments "${_arguments_options[@]}" \
 '--import-map=[Load import map file]:FILE:_files' \
-'-r+[Reload source code cache (recompile TypeScript)]:CACHE_BLOCKLIST:_files' \
-'--reload=[Reload source code cache (recompile TypeScript)]:CACHE_BLOCKLIST:_files' \
+'-r+[Reload source code cache (recompile TypeScript)]' \
+'--reload=[Reload source code cache (recompile TypeScript)]' \
+'--lock=[Check the specified lock file.
+
+If value is not provided, defaults to "deno.lock" in the current working directory.]' \
 '-L+[Set log level]: :(debug info)' \
 '--log-level=[Set log level]: :(debug info)' \
+'(--lock)--no-lock[Disable auto discovery of the lock file.]' \
+'--no-npm[Do not resolve npm modules]' \
+'--no-remote[Do not resolve remote modules]' \
 '--json[Output documentation in JSON format]' \
 '--private[Output private documentation]' \
-'-h[Print help information]' \
-'--help[Print help information]' \
 '--unstable[Enable unstable features and APIs]' \
 '-q[Suppress diagnostic output]' \
 '--quiet[Suppress diagnostic output]' \
+'-h[Print help (see more with '\''--help'\'')]' \
+'--help[Print help (see more with '\''--help'\'')]' \
 '::source_file:_files' \
 '::filter -- Dot separated path to symbol:' \
 && ret=0
 ;;
 (eval)
 _arguments "${_arguments_options[@]}" \
+'--no-check=[Skip type-checking modules]' \
+'(--no-check)--check=[Type-check modules]' \
 '--import-map=[Load import map file]:FILE:_files' \
+'--node-modules-dir=[Creates a local node_modules folder]' \
 '-c+[Specify the configuration file]:FILE:_files' \
 '--config=[Specify the configuration file]:FILE:_files' \
-'--no-check=[Skip type-checking modules]:NO_CHECK_TYPE: ' \
-'(--no-check)--check=[Type-check modules]:CHECK_TYPE: ' \
-'-r+[Reload source code cache (recompile TypeScript)]:CACHE_BLOCKLIST:_files' \
-'--reload=[Reload source code cache (recompile TypeScript)]:CACHE_BLOCKLIST:_files' \
-'--lock=[Check the specified lock file]:FILE:_files' \
+'-r+[Reload source code cache (recompile TypeScript)]' \
+'--reload=[Reload source code cache (recompile TypeScript)]' \
+'--lock=[Check the specified lock file.
+
+If value is not provided, defaults to "deno.lock" in the current working directory.]' \
 '--cert=[Load certificate authority from PEM encoded file]:FILE:_files' \
-'--inspect=[Activate inspector on host:port (default: 127.0.0.1:9229)]:HOST:PORT: ' \
-'--inspect-brk=[Activate inspector on host:port and break at start of user script]:HOST:PORT: ' \
+'--inspect=[Activate inspector on host:port (default: 127.0.0.1:9229)]' \
+'--inspect-brk=[Activate inspector on host:port, wait for debugger to connect and break at the start of user script]' \
+'--inspect-wait=[Activate inspector on host:port and wait for debugger to connect before running user code]' \
 '--location=[Value of '\''globalThis.location'\'' used by some web APIs]:HREF:_urls' \
-'--v8-flags=[Set V8 command line options]: : ' \
+'--v8-flags=[Set V8 command line options]' \
 '--seed=[Set the random number generator seed]:NUMBER: ' \
-'--ext=[Set standard input (stdin) content type]: :(ts tsx js jsx)' \
+'--ext=[Set content type of the supplied file]: :(ts tsx js jsx)' \
 '-L+[Set log level]: :(debug info)' \
 '--log-level=[Set log level]: :(debug info)' \
 '--no-remote[Do not resolve remote modules]' \
+'--no-npm[Do not resolve npm modules]' \
 '(-c --config)--no-config[Disable automatic loading of the configuration file.]' \
-'--lock-write[Write lock file (use with --lock)]' \
+'(--no-lock)--lock-write[Force overwriting the lock file.]' \
+'(--lock)--no-lock[Disable auto discovery of the lock file.]' \
 '--cached-only[Require that remote dependencies are already cached]' \
 '--enable-testing-features-do-not-use[INTERNAL: Enable internal features used during integration testing]' \
-'--compat[UNSTABLE: Node compatibility mode.]' \
-'-T[Treat eval input as TypeScript]' \
-'--ts[Treat eval input as TypeScript]' \
+'(--ext)-T[deprecated: Treat eval input as TypeScript]' \
+'(--ext)--ts[deprecated: Treat eval input as TypeScript]' \
 '-p[print result to stdout]' \
 '--print[print result to stdout]' \
-'-h[Print help information]' \
-'--help[Print help information]' \
 '--unstable[Enable unstable features and APIs]' \
 '-q[Suppress diagnostic output]' \
 '--quiet[Suppress diagnostic output]' \
+'-h[Print help (see more with '\''--help'\'')]' \
+'--help[Print help (see more with '\''--help'\'')]' \
 '*::code_arg -- Code arg:' \
 && ret=0
 ;;
@@ -287,71 +327,96 @@ _arguments "${_arguments_options[@]}" \
 _arguments "${_arguments_options[@]}" \
 '-c+[Specify the configuration file]:FILE:_files' \
 '--config=[Specify the configuration file]:FILE:_files' \
-'--ext=[Set standard input (stdin) content type]: :(ts tsx js jsx md json jsonc)' \
+'--ext=[Set content type of the supplied file]: :(ts tsx js jsx md json jsonc)' \
 '--ignore=[Ignore formatting particular source files]: :_files' \
-'--options-line-width=[Define maximum line width. Defaults to 80.]: : ' \
-'--options-indent-width=[Define indentation width. Defaults to 2.]: : ' \
-'--options-prose-wrap=[Define how prose should be wrapped. Defaults to always.]: :(always never preserve)' \
+'--use-tabs=[Use tabs instead of spaces for indentation. Defaults to false.]' \
+'--line-width=[Define maximum line width. Defaults to 80.]: : ' \
+'--indent-width=[Define indentation width. Defaults to 2.]: : ' \
+'--single-quote=[Use single quotes. Defaults to false.]' \
+'--prose-wrap=[Define how prose should be wrapped. Defaults to always.]: :(always never preserve)' \
+'--no-semicolons=[Don'\''t use semicolons except where necessary.]' \
 '-L+[Set log level]: :(debug info)' \
 '--log-level=[Set log level]: :(debug info)' \
 '(-c --config)--no-config[Disable automatic loading of the configuration file.]' \
 '--check[Check if the source files are formatted]' \
 '--watch[Watch for file changes and restart automatically]' \
 '--no-clear-screen[Do not clear terminal screen when under watch mode]' \
-'--options-use-tabs[Use tabs instead of spaces for indentation. Defaults to false.]' \
-'--options-single-quote[Use single quotes. Defaults to false.]' \
-'-h[Print help information]' \
-'--help[Print help information]' \
 '--unstable[Enable unstable features and APIs]' \
 '-q[Suppress diagnostic output]' \
 '--quiet[Suppress diagnostic output]' \
+'-h[Print help (see more with '\''--help'\'')]' \
+'--help[Print help (see more with '\''--help'\'')]' \
 '*::files:_files' \
+&& ret=0
+;;
+(init)
+_arguments "${_arguments_options[@]}" \
+'-L+[Set log level]: :(debug info)' \
+'--log-level=[Set log level]: :(debug info)' \
+'--unstable[Enable unstable features and APIs]' \
+'-q[Suppress diagnostic output]' \
+'--quiet[Suppress diagnostic output]' \
+'-h[Print help]' \
+'--help[Print help]' \
+'::dir:_files -/' \
 && ret=0
 ;;
 (info)
 _arguments "${_arguments_options[@]}" \
-'-r+[Reload source code cache (recompile TypeScript)]:CACHE_BLOCKLIST:_files' \
-'--reload=[Reload source code cache (recompile TypeScript)]:CACHE_BLOCKLIST:_files' \
+'-r+[Reload source code cache (recompile TypeScript)]' \
+'--reload=[Reload source code cache (recompile TypeScript)]' \
 '--cert=[Load certificate authority from PEM encoded file]:FILE:_files' \
 '()--location=[Show files used for origin bound APIs like the Web Storage API when running a script with '\''--location=<HREF>'\'']:HREF:_urls' \
-'--no-check=[Skip type-checking modules]:NO_CHECK_TYPE: ' \
+'--no-check=[Skip type-checking modules]' \
+'--lock=[Check the specified lock file.
+
+If value is not provided, defaults to "deno.lock" in the current working directory.]' \
 '-c+[Specify the configuration file]:FILE:_files' \
 '--config=[Specify the configuration file]:FILE:_files' \
 '--import-map=[Load import map file]:FILE:_files' \
+'--node-modules-dir=[Creates a local node_modules folder]' \
 '-L+[Set log level]: :(debug info)' \
 '--log-level=[Set log level]: :(debug info)' \
 '(-c --config)--no-config[Disable automatic loading of the configuration file.]' \
+'--no-remote[Do not resolve remote modules]' \
+'--no-npm[Do not resolve npm modules]' \
+'(--lock)--no-lock[Disable auto discovery of the lock file.]' \
 '--json[UNSTABLE: Outputs the information in JSON format]' \
-'-h[Print help information]' \
-'--help[Print help information]' \
 '--unstable[Enable unstable features and APIs]' \
 '-q[Suppress diagnostic output]' \
 '--quiet[Suppress diagnostic output]' \
+'-h[Print help (see more with '\''--help'\'')]' \
+'--help[Print help (see more with '\''--help'\'')]' \
 '::file:_files' \
 && ret=0
 ;;
 (install)
 _arguments "${_arguments_options[@]}" \
+'--no-check=[Skip type-checking modules]' \
+'(--no-check)--check=[Type-check modules]' \
 '--import-map=[Load import map file]:FILE:_files' \
+'--node-modules-dir=[Creates a local node_modules folder]' \
 '-c+[Specify the configuration file]:FILE:_files' \
 '--config=[Specify the configuration file]:FILE:_files' \
-'--no-check=[Skip type-checking modules]:NO_CHECK_TYPE: ' \
-'(--no-check)--check=[Type-check modules]:CHECK_TYPE: ' \
-'-r+[Reload source code cache (recompile TypeScript)]:CACHE_BLOCKLIST:_files' \
-'--reload=[Reload source code cache (recompile TypeScript)]:CACHE_BLOCKLIST:_files' \
-'--lock=[Check the specified lock file]:FILE:_files' \
+'-r+[Reload source code cache (recompile TypeScript)]' \
+'--reload=[Reload source code cache (recompile TypeScript)]' \
+'--lock=[Check the specified lock file.
+
+If value is not provided, defaults to "deno.lock" in the current working directory.]' \
 '--cert=[Load certificate authority from PEM encoded file]:FILE:_files' \
-'--allow-read=[Allow file system read access]: :_files' \
-'--allow-write=[Allow file system write access]: :_files' \
-'--allow-net=[Allow network access]: : ' \
-'--unsafely-ignore-certificate-errors=[DANGER: Disables verification of TLS certificates]:HOSTNAMES: ' \
-'--allow-env=[Allow environment access]: : ' \
-'--allow-run=[Allow running subprocesses]: : ' \
-'--allow-ffi=[Allow loading dynamic libraries]: :_files' \
-'--inspect=[Activate inspector on host:port (default: 127.0.0.1:9229)]:HOST:PORT: ' \
-'--inspect-brk=[Activate inspector on host:port and break at start of user script]:HOST:PORT: ' \
+'--allow-read=[Allow file system read access]' \
+'--allow-write=[Allow file system write access]' \
+'--allow-net=[Allow network access]' \
+'--unsafely-ignore-certificate-errors=[DANGER: Disables verification of TLS certificates]' \
+'--allow-env=[Allow environment access]' \
+'--allow-sys=[Allow access to system info]' \
+'--allow-run=[Allow running subprocesses]' \
+'--allow-ffi=[Allow loading dynamic libraries]' \
+'--inspect=[Activate inspector on host:port (default: 127.0.0.1:9229)]' \
+'--inspect-brk=[Activate inspector on host:port, wait for debugger to connect and break at the start of user script]' \
+'--inspect-wait=[Activate inspector on host:port and wait for debugger to connect before running user code]' \
 '--location=[Value of '\''globalThis.location'\'' used by some web APIs]:HREF:_urls' \
-'--v8-flags=[Set V8 command line options]: : ' \
+'--v8-flags=[Set V8 command line options]' \
 '--seed=[Set the random number generator seed]:NUMBER: ' \
 '-n+[Executable file name]: : ' \
 '--name=[Executable file name]: : ' \
@@ -359,8 +424,10 @@ _arguments "${_arguments_options[@]}" \
 '-L+[Set log level]: :(debug info)' \
 '--log-level=[Set log level]: :(debug info)' \
 '--no-remote[Do not resolve remote modules]' \
+'--no-npm[Do not resolve npm modules]' \
 '(-c --config)--no-config[Disable automatic loading of the configuration file.]' \
-'--lock-write[Write lock file (use with --lock)]' \
+'(--no-lock)--lock-write[Force overwriting the lock file.]' \
+'(--lock)--no-lock[Disable auto discovery of the lock file.]' \
 '--allow-hrtime[Allow high resolution time measurement]' \
 '-A[Allow all permissions]' \
 '--allow-all[Allow all permissions]' \
@@ -368,14 +435,13 @@ _arguments "${_arguments_options[@]}" \
 '--no-prompt[Always throw if required permission wasn'\''t passed]' \
 '--cached-only[Require that remote dependencies are already cached]' \
 '--enable-testing-features-do-not-use[INTERNAL: Enable internal features used during integration testing]' \
-'--compat[UNSTABLE: Node compatibility mode.]' \
 '-f[Forcefully overwrite existing installation]' \
 '--force[Forcefully overwrite existing installation]' \
-'-h[Print help information]' \
-'--help[Print help information]' \
 '--unstable[Enable unstable features and APIs]' \
 '-q[Suppress diagnostic output]' \
 '--quiet[Suppress diagnostic output]' \
+'-h[Print help (see more with '\''--help'\'')]' \
+'--help[Print help (see more with '\''--help'\'')]' \
 '*::cmd:_files' \
 && ret=0
 ;;
@@ -384,11 +450,11 @@ _arguments "${_arguments_options[@]}" \
 '--root=[Installation root]: :_files -/' \
 '-L+[Set log level]: :(debug info)' \
 '--log-level=[Set log level]: :(debug info)' \
-'-h[Print help information]' \
-'--help[Print help information]' \
 '--unstable[Enable unstable features and APIs]' \
 '-q[Suppress diagnostic output]' \
 '--quiet[Suppress diagnostic output]' \
+'-h[Print help (see more with '\''--help'\'')]' \
+'--help[Print help (see more with '\''--help'\'')]' \
 ':name:' \
 && ret=0
 ;;
@@ -396,16 +462,16 @@ _arguments "${_arguments_options[@]}" \
 _arguments "${_arguments_options[@]}" \
 '-L+[Set log level]: :(debug info)' \
 '--log-level=[Set log level]: :(debug info)' \
-'-h[Print help information]' \
-'--help[Print help information]' \
 '--unstable[Enable unstable features and APIs]' \
 '-q[Suppress diagnostic output]' \
 '--quiet[Suppress diagnostic output]' \
+'-h[Print help (see more with '\''--help'\'')]' \
+'--help[Print help (see more with '\''--help'\'')]' \
 && ret=0
 ;;
 (lint)
 _arguments "${_arguments_options[@]}" \
-'(--rules)--rules-tags=[Use set of rules with a tag]: : ' \
+'(--rules)*--rules-tags=[Use set of rules with a tag]: : ' \
 '(--rules)--rules-include=[Include lint rules]: : ' \
 '(--rules)--rules-exclude=[Exclude lint rules]: : ' \
 '-c+[Specify the configuration file]:FILE:_files' \
@@ -416,79 +482,54 @@ _arguments "${_arguments_options[@]}" \
 '--rules[List available rules]' \
 '(-c --config)--no-config[Disable automatic loading of the configuration file.]' \
 '--json[Output lint result in JSON format]' \
+'(--json)--compact[Output lint result in compact format]' \
 '--watch[Watch for file changes and restart automatically]' \
 '--no-clear-screen[Do not clear terminal screen when under watch mode]' \
-'-h[Print help information]' \
-'--help[Print help information]' \
 '--unstable[Enable unstable features and APIs]' \
 '-q[Suppress diagnostic output]' \
 '--quiet[Suppress diagnostic output]' \
+'-h[Print help (see more with '\''--help'\'')]' \
+'--help[Print help (see more with '\''--help'\'')]' \
 '*::files:_files' \
 && ret=0
 ;;
 (repl)
 _arguments "${_arguments_options[@]}" \
+'--no-check=[Skip type-checking modules]' \
+'(--no-check)--check=[Type-check modules]' \
 '--import-map=[Load import map file]:FILE:_files' \
+'--node-modules-dir=[Creates a local node_modules folder]' \
 '-c+[Specify the configuration file]:FILE:_files' \
 '--config=[Specify the configuration file]:FILE:_files' \
-'--no-check=[Skip type-checking modules]:NO_CHECK_TYPE: ' \
-'(--no-check)--check=[Type-check modules]:CHECK_TYPE: ' \
-'-r+[Reload source code cache (recompile TypeScript)]:CACHE_BLOCKLIST:_files' \
-'--reload=[Reload source code cache (recompile TypeScript)]:CACHE_BLOCKLIST:_files' \
-'--lock=[Check the specified lock file]:FILE:_files' \
+'-r+[Reload source code cache (recompile TypeScript)]' \
+'--reload=[Reload source code cache (recompile TypeScript)]' \
+'--lock=[Check the specified lock file.
+
+If value is not provided, defaults to "deno.lock" in the current working directory.]' \
 '--cert=[Load certificate authority from PEM encoded file]:FILE:_files' \
-'--inspect=[Activate inspector on host:port (default: 127.0.0.1:9229)]:HOST:PORT: ' \
-'--inspect-brk=[Activate inspector on host:port and break at start of user script]:HOST:PORT: ' \
+'--allow-read=[Allow file system read access]' \
+'--allow-write=[Allow file system write access]' \
+'--allow-net=[Allow network access]' \
+'--unsafely-ignore-certificate-errors=[DANGER: Disables verification of TLS certificates]' \
+'--allow-env=[Allow environment access]' \
+'--allow-sys=[Allow access to system info]' \
+'--allow-run=[Allow running subprocesses]' \
+'--allow-ffi=[Allow loading dynamic libraries]' \
+'--inspect=[Activate inspector on host:port (default: 127.0.0.1:9229)]' \
+'--inspect-brk=[Activate inspector on host:port, wait for debugger to connect and break at the start of user script]' \
+'--inspect-wait=[Activate inspector on host:port and wait for debugger to connect before running user code]' \
 '--location=[Value of '\''globalThis.location'\'' used by some web APIs]:HREF:_urls' \
-'--v8-flags=[Set V8 command line options]: : ' \
+'--v8-flags=[Set V8 command line options]' \
 '--seed=[Set the random number generator seed]:NUMBER: ' \
 '--eval-file=[Evaluates the provided file(s) as scripts when the REPL starts. Accepts file paths and URLs.]: :_files' \
 '--eval=[Evaluates the provided code when the REPL starts.]:code: ' \
-'--unsafely-ignore-certificate-errors=[DANGER: Disables verification of TLS certificates]:HOSTNAMES: ' \
 '-L+[Set log level]: :(debug info)' \
 '--log-level=[Set log level]: :(debug info)' \
 '--no-remote[Do not resolve remote modules]' \
+'--no-npm[Do not resolve npm modules]' \
 '(-c --config)--no-config[Disable automatic loading of the configuration file.]' \
-'--lock-write[Write lock file (use with --lock)]' \
-'--cached-only[Require that remote dependencies are already cached]' \
-'--enable-testing-features-do-not-use[INTERNAL: Enable internal features used during integration testing]' \
-'--compat[UNSTABLE: Node compatibility mode.]' \
-'-h[Print help information]' \
-'--help[Print help information]' \
-'--unstable[Enable unstable features and APIs]' \
-'-q[Suppress diagnostic output]' \
-'--quiet[Suppress diagnostic output]' \
-&& ret=0
-;;
-(run)
-_arguments "${_arguments_options[@]}" \
-'--import-map=[Load import map file]:FILE:_files' \
-'-c+[Specify the configuration file]:FILE:_files' \
-'--config=[Specify the configuration file]:FILE:_files' \
-'--no-check=[Skip type-checking modules]:NO_CHECK_TYPE: ' \
-'(--no-check)--check=[Type-check modules]:CHECK_TYPE: ' \
-'-r+[Reload source code cache (recompile TypeScript)]:CACHE_BLOCKLIST:_files' \
-'--reload=[Reload source code cache (recompile TypeScript)]:CACHE_BLOCKLIST:_files' \
-'--lock=[Check the specified lock file]:FILE:_files' \
-'--cert=[Load certificate authority from PEM encoded file]:FILE:_files' \
-'--allow-read=[Allow file system read access]: :_files' \
-'--allow-write=[Allow file system write access]: :_files' \
-'--allow-net=[Allow network access]: : ' \
-'--unsafely-ignore-certificate-errors=[DANGER: Disables verification of TLS certificates]:HOSTNAMES: ' \
-'--allow-env=[Allow environment access]: : ' \
-'--allow-run=[Allow running subprocesses]: : ' \
-'--allow-ffi=[Allow loading dynamic libraries]: :_files' \
-'--inspect=[Activate inspector on host:port (default: 127.0.0.1:9229)]:HOST:PORT: ' \
-'--inspect-brk=[Activate inspector on host:port and break at start of user script]:HOST:PORT: ' \
-'--location=[Value of '\''globalThis.location'\'' used by some web APIs]:HREF:_urls' \
-'--v8-flags=[Set V8 command line options]: : ' \
-'--seed=[Set the random number generator seed]:NUMBER: ' \
-'(--inspect --inspect-brk)--watch=[Watch for file changes and restart automatically]:FILES:_files' \
-'-L+[Set log level]: :(debug info)' \
-'--log-level=[Set log level]: :(debug info)' \
-'--no-remote[Do not resolve remote modules]' \
-'(-c --config)--no-config[Disable automatic loading of the configuration file.]' \
-'--lock-write[Write lock file (use with --lock)]' \
+'(--no-lock)--lock-write[Force overwriting the lock file.]' \
+'(--lock)--no-lock[Disable auto discovery of the lock file.]' \
 '--allow-hrtime[Allow high resolution time measurement]' \
 '-A[Allow all permissions]' \
 '--allow-all[Allow all permissions]' \
@@ -496,13 +537,63 @@ _arguments "${_arguments_options[@]}" \
 '--no-prompt[Always throw if required permission wasn'\''t passed]' \
 '--cached-only[Require that remote dependencies are already cached]' \
 '--enable-testing-features-do-not-use[INTERNAL: Enable internal features used during integration testing]' \
-'--compat[UNSTABLE: Node compatibility mode.]' \
-'--no-clear-screen[Do not clear terminal screen when under watch mode]' \
-'-h[Print help information]' \
-'--help[Print help information]' \
 '--unstable[Enable unstable features and APIs]' \
 '-q[Suppress diagnostic output]' \
 '--quiet[Suppress diagnostic output]' \
+'-h[Print help (see more with '\''--help'\'')]' \
+'--help[Print help (see more with '\''--help'\'')]' \
+&& ret=0
+;;
+(run)
+_arguments "${_arguments_options[@]}" \
+'--no-check=[Skip type-checking modules]' \
+'(--no-check)--check=[Type-check modules]' \
+'--import-map=[Load import map file]:FILE:_files' \
+'--node-modules-dir=[Creates a local node_modules folder]' \
+'-c+[Specify the configuration file]:FILE:_files' \
+'--config=[Specify the configuration file]:FILE:_files' \
+'-r+[Reload source code cache (recompile TypeScript)]' \
+'--reload=[Reload source code cache (recompile TypeScript)]' \
+'--lock=[Check the specified lock file.
+
+If value is not provided, defaults to "deno.lock" in the current working directory.]' \
+'--cert=[Load certificate authority from PEM encoded file]:FILE:_files' \
+'--allow-read=[Allow file system read access]' \
+'--allow-write=[Allow file system write access]' \
+'--allow-net=[Allow network access]' \
+'--unsafely-ignore-certificate-errors=[DANGER: Disables verification of TLS certificates]' \
+'--allow-env=[Allow environment access]' \
+'--allow-sys=[Allow access to system info]' \
+'--allow-run=[Allow running subprocesses]' \
+'--allow-ffi=[Allow loading dynamic libraries]' \
+'--inspect=[Activate inspector on host:port (default: 127.0.0.1:9229)]' \
+'--inspect-brk=[Activate inspector on host:port, wait for debugger to connect and break at the start of user script]' \
+'--inspect-wait=[Activate inspector on host:port and wait for debugger to connect before running user code]' \
+'--location=[Value of '\''globalThis.location'\'' used by some web APIs]:HREF:_urls' \
+'--v8-flags=[Set V8 command line options]' \
+'--seed=[Set the random number generator seed]:NUMBER: ' \
+'(--inspect --inspect-wait --inspect-brk)--watch=[Watch for file changes and restart automatically]' \
+'--ext=[Set content type of the supplied file]: :(ts tsx js jsx)' \
+'-L+[Set log level]: :(debug info)' \
+'--log-level=[Set log level]: :(debug info)' \
+'--no-remote[Do not resolve remote modules]' \
+'--no-npm[Do not resolve npm modules]' \
+'(-c --config)--no-config[Disable automatic loading of the configuration file.]' \
+'(--no-lock)--lock-write[Force overwriting the lock file.]' \
+'(--lock)--no-lock[Disable auto discovery of the lock file.]' \
+'--allow-hrtime[Allow high resolution time measurement]' \
+'-A[Allow all permissions]' \
+'--allow-all[Allow all permissions]' \
+'--prompt[deprecated: Fallback to prompt if required permission wasn'\''t passed]' \
+'--no-prompt[Always throw if required permission wasn'\''t passed]' \
+'--cached-only[Require that remote dependencies are already cached]' \
+'--enable-testing-features-do-not-use[INTERNAL: Enable internal features used during integration testing]' \
+'--no-clear-screen[Do not clear terminal screen when under watch mode]' \
+'--unstable[Enable unstable features and APIs]' \
+'-q[Suppress diagnostic output]' \
+'--quiet[Suppress diagnostic output]' \
+'-h[Print help (see more with '\''--help'\'')]' \
+'--help[Print help (see more with '\''--help'\'')]' \
 '*::script_arg -- Script arg:_files' \
 && ret=0
 ;;
@@ -513,49 +604,55 @@ _arguments "${_arguments_options[@]}" \
 '--cwd=[Specify the directory to run the task in]:DIR:_files -/' \
 '-L+[Set log level]: :(debug info)' \
 '--log-level=[Set log level]: :(debug info)' \
-'-h[Print help information]' \
-'--help[Print help information]' \
 '--unstable[Enable unstable features and APIs]' \
 '-q[Suppress diagnostic output]' \
 '--quiet[Suppress diagnostic output]' \
-'*::task_name_and_args -- Task to be executed with any additional arguments passed to the task:' \
+'-h[Print help (see more with '\''--help'\'')]' \
+'--help[Print help (see more with '\''--help'\'')]' \
 && ret=0
 ;;
 (test)
 _arguments "${_arguments_options[@]}" \
+'--no-check=[Skip type-checking modules]' \
+'(--no-check)--check=[Type-check modules]' \
 '--import-map=[Load import map file]:FILE:_files' \
+'--node-modules-dir=[Creates a local node_modules folder]' \
 '-c+[Specify the configuration file]:FILE:_files' \
 '--config=[Specify the configuration file]:FILE:_files' \
-'--no-check=[Skip type-checking modules]:NO_CHECK_TYPE: ' \
-'(--no-check)--check=[Type-check modules]:CHECK_TYPE: ' \
-'-r+[Reload source code cache (recompile TypeScript)]:CACHE_BLOCKLIST:_files' \
-'--reload=[Reload source code cache (recompile TypeScript)]:CACHE_BLOCKLIST:_files' \
-'--lock=[Check the specified lock file]:FILE:_files' \
+'-r+[Reload source code cache (recompile TypeScript)]' \
+'--reload=[Reload source code cache (recompile TypeScript)]' \
+'--lock=[Check the specified lock file.
+
+If value is not provided, defaults to "deno.lock" in the current working directory.]' \
 '--cert=[Load certificate authority from PEM encoded file]:FILE:_files' \
-'--allow-read=[Allow file system read access]: :_files' \
-'--allow-write=[Allow file system write access]: :_files' \
-'--allow-net=[Allow network access]: : ' \
-'--unsafely-ignore-certificate-errors=[DANGER: Disables verification of TLS certificates]:HOSTNAMES: ' \
-'--allow-env=[Allow environment access]: : ' \
-'--allow-run=[Allow running subprocesses]: : ' \
-'--allow-ffi=[Allow loading dynamic libraries]: :_files' \
-'--inspect=[Activate inspector on host:port (default: 127.0.0.1:9229)]:HOST:PORT: ' \
-'--inspect-brk=[Activate inspector on host:port and break at start of user script]:HOST:PORT: ' \
+'--allow-read=[Allow file system read access]' \
+'--allow-write=[Allow file system write access]' \
+'--allow-net=[Allow network access]' \
+'--unsafely-ignore-certificate-errors=[DANGER: Disables verification of TLS certificates]' \
+'--allow-env=[Allow environment access]' \
+'--allow-sys=[Allow access to system info]' \
+'--allow-run=[Allow running subprocesses]' \
+'--allow-ffi=[Allow loading dynamic libraries]' \
+'--inspect=[Activate inspector on host:port (default: 127.0.0.1:9229)]' \
+'--inspect-brk=[Activate inspector on host:port, wait for debugger to connect and break at the start of user script]' \
+'--inspect-wait=[Activate inspector on host:port and wait for debugger to connect before running user code]' \
 '--location=[Value of '\''globalThis.location'\'' used by some web APIs]:HREF:_urls' \
-'--v8-flags=[Set V8 command line options]: : ' \
+'--v8-flags=[Set V8 command line options]' \
 '--seed=[Set the random number generator seed]:NUMBER: ' \
 '--ignore=[Ignore files]: :_files' \
-'--fail-fast=[Stop after N errors. Defaults to stopping after first failure.]:N: ' \
+'--fail-fast=[Stop after N errors. Defaults to stopping after first failure.]' \
 '--filter=[Run tests with this string or pattern in the test name]: : ' \
-'--shuffle=[(UNSTABLE): Shuffle the order in which the tests are run]:NUMBER: ' \
-'(--inspect --inspect-brk)--coverage=[UNSTABLE: Collect coverage profile data into DIR]:DIR: ' \
-'-j+[Number of parallel workers, defaults to # of CPUs when no value is provided. Defaults to 1 when the option is not present.]: : ' \
-'--jobs=[Number of parallel workers, defaults to # of CPUs when no value is provided. Defaults to 1 when the option is not present.]: : ' \
+'--shuffle=[Shuffle the order in which the tests are run]' \
+'(--inspect --inspect-wait --inspect-brk)--coverage=[Collect coverage profile data into DIR]:DIR: ' \
+'-j+[deprecated: Number of parallel workers, defaults to number of available CPUs when no value is provided. Defaults to 1 when the option is not present.]' \
+'--jobs=[deprecated: Number of parallel workers, defaults to number of available CPUs when no value is provided. Defaults to 1 when the option is not present.]' \
 '-L+[Set log level]: :(debug info)' \
 '--log-level=[Set log level]: :(debug info)' \
 '--no-remote[Do not resolve remote modules]' \
+'--no-npm[Do not resolve npm modules]' \
 '(-c --config)--no-config[Disable automatic loading of the configuration file.]' \
-'--lock-write[Write lock file (use with --lock)]' \
+'(--no-lock)--lock-write[Force overwriting the lock file.]' \
+'(--lock)--no-lock[Disable auto discovery of the lock file.]' \
 '--allow-hrtime[Allow high resolution time measurement]' \
 '-A[Allow all permissions]' \
 '--allow-all[Allow all permissions]' \
@@ -563,31 +660,30 @@ _arguments "${_arguments_options[@]}" \
 '--no-prompt[Always throw if required permission wasn'\''t passed]' \
 '--cached-only[Require that remote dependencies are already cached]' \
 '--enable-testing-features-do-not-use[INTERNAL: Enable internal features used during integration testing]' \
-'--compat[UNSTABLE: Node compatibility mode.]' \
 '--no-run[Cache test modules, but don'\''t run tests]' \
 '--trace-ops[Enable tracing of async ops. Useful when debugging leaking ops in test, but impacts test execution time.]' \
-'--doc[UNSTABLE: type-check code blocks]' \
+'--doc[Type-check code blocks in JSDoc and Markdown]' \
 '--allow-none[Don'\''t return error code if no test files are found]' \
+'(-j --jobs)--parallel[Run test modules in parallel. Parallelism defaults to the number of available CPUs or the value in the DENO_JOBS environment variable.]' \
 '(--no-run --coverage)--watch[Watch for file changes and restart automatically]' \
 '--no-clear-screen[Do not clear terminal screen when under watch mode]' \
-'-h[Print help information]' \
-'--help[Print help information]' \
 '--unstable[Enable unstable features and APIs]' \
 '-q[Suppress diagnostic output]' \
 '--quiet[Suppress diagnostic output]' \
+'-h[Print help (see more with '\''--help'\'')]' \
+'--help[Print help (see more with '\''--help'\'')]' \
 '*::files -- List of file names to run:_files' \
-'*::script_arg -- Script arg:_files' \
 && ret=0
 ;;
 (types)
 _arguments "${_arguments_options[@]}" \
 '-L+[Set log level]: :(debug info)' \
 '--log-level=[Set log level]: :(debug info)' \
-'-h[Print help information]' \
-'--help[Print help information]' \
 '--unstable[Enable unstable features and APIs]' \
 '-q[Suppress diagnostic output]' \
 '--quiet[Suppress diagnostic output]' \
+'-h[Print help (see more with '\''--help'\'')]' \
+'--help[Print help (see more with '\''--help'\'')]' \
 && ret=0
 ;;
 (upgrade)
@@ -601,11 +697,11 @@ _arguments "${_arguments_options[@]}" \
 '-f[Replace current exe even if not out-of-date]' \
 '--force[Replace current exe even if not out-of-date]' \
 '--canary[Upgrade to canary builds]' \
-'-h[Print help information]' \
-'--help[Print help information]' \
 '--unstable[Enable unstable features and APIs]' \
 '-q[Suppress diagnostic output]' \
 '--quiet[Suppress diagnostic output]' \
+'-h[Print help (see more with '\''--help'\'')]' \
+'--help[Print help (see more with '\''--help'\'')]' \
 && ret=0
 ;;
 (vendor)
@@ -614,31 +710,28 @@ _arguments "${_arguments_options[@]}" \
 '-c+[Specify the configuration file]:FILE:_files' \
 '--config=[Specify the configuration file]:FILE:_files' \
 '--import-map=[Load import map file]:FILE:_files' \
-'--lock=[Check the specified lock file]:FILE:_files' \
-'-r+[Reload source code cache (recompile TypeScript)]:CACHE_BLOCKLIST:_files' \
-'--reload=[Reload source code cache (recompile TypeScript)]:CACHE_BLOCKLIST:_files' \
+'--lock=[Check the specified lock file.
+
+If value is not provided, defaults to "deno.lock" in the current working directory.]' \
+'-r+[Reload source code cache (recompile TypeScript)]' \
+'--reload=[Reload source code cache (recompile TypeScript)]' \
 '--cert=[Load certificate authority from PEM encoded file]:FILE:_files' \
 '-L+[Set log level]: :(debug info)' \
 '--log-level=[Set log level]: :(debug info)' \
 '-f[Forcefully overwrite conflicting files in existing output directory]' \
 '--force[Forcefully overwrite conflicting files in existing output directory]' \
 '(-c --config)--no-config[Disable automatic loading of the configuration file.]' \
-'-h[Print help information]' \
-'--help[Print help information]' \
 '--unstable[Enable unstable features and APIs]' \
 '-q[Suppress diagnostic output]' \
 '--quiet[Suppress diagnostic output]' \
+'-h[Print help (see more with '\''--help'\'')]' \
+'--help[Print help (see more with '\''--help'\'')]' \
 '*::specifiers:' \
 && ret=0
 ;;
 (help)
 _arguments "${_arguments_options[@]}" \
-'-L+[Set log level]: :(debug info)' \
-'--log-level=[Set log level]: :(debug info)' \
-'--unstable[Enable unstable features and APIs]' \
-'-q[Suppress diagnostic output]' \
-'--quiet[Suppress diagnostic output]' \
-'*::subcommand -- The subcommand whose help message to display:' \
+'*::subcommand -- Print help for the subcommand(s):' \
 && ret=0
 ;;
         esac
@@ -659,6 +752,7 @@ _deno_commands() {
 'doc:Show documentation for a module' \
 'eval:Eval script' \
 'fmt:Format source files' \
+'init:Initialize a new project' \
 'info:Show info about cache or info related to source file' \
 'install:Install script as an executable' \
 'uninstall:Uninstall a script previously installed with deno install' \
@@ -735,6 +829,11 @@ _deno__info_commands() {
     local commands; commands=()
     _describe -t commands 'deno info commands' commands "$@"
 }
+(( $+functions[_deno__init_commands] )) ||
+_deno__init_commands() {
+    local commands; commands=()
+    _describe -t commands 'deno init commands' commands "$@"
+}
 (( $+functions[_deno__install_commands] )) ||
 _deno__install_commands() {
     local commands; commands=()
@@ -791,4 +890,8 @@ _deno__vendor_commands() {
     _describe -t commands 'deno vendor commands' commands "$@"
 }
 
-_deno "$@"
+if [ "$funcstack[1]" = "_deno" ]; then
+    _deno "$@"
+else
+    compdef _deno deno
+fi

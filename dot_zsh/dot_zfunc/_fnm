@@ -48,7 +48,8 @@ _arguments "${_arguments_options[@]}" \
 _arguments "${_arguments_options[@]}" \
 '--help[Print help information]' \
 '--version[Print version information]' \
-'(--version)--lts[Install latest LTS]' \
+'(--version --latest)--lts[Install latest LTS]' \
+'(--version --lts)--latest[Install latest version]' \
 '::version -- A version string. Can be a partial semver or a LTS version name by the format lts/NAME:' \
 && ret=0
 ;;
@@ -66,6 +67,7 @@ _arguments "${_arguments_options[@]}" \
 '--shell=[The shell syntax to use. Infers when missing]:SHELL:(bash zsh fish powershell)' \
 '--help[Print help information]' \
 '--version[Print version information]' \
+'(--shell)--json[Print JSON instead of shell commands]' \
 '--multi[Deprecated. This is the default now]' \
 '--use-on-cd[Print the script to change Node versions every directory change]' \
 && ret=0
