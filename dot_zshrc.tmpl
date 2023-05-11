@@ -2,30 +2,23 @@
 # Fig pre block. Keep at the top of this file.
 [[ -f "$HOME/.fig/shell/zshrc.pre.zsh" ]] && builtin source "$HOME/.fig/shell/zshrc.pre.zsh"
 {{ end }}
-source ~/.zsh/antigen.zsh
 
 export MANPAGER="sh -c 'col -bx | bat -l man -p'"
 export EDITOR=nvim
 
+# Created by Zap installer
+[ -f "${XDG_DATA_HOME:-$HOME/.local/share}/zap/zap.zsh" ] && source "${XDG_DATA_HOME:-$HOME/.local/share}/zap/zap.zsh"
+plug "zap-zsh/supercharge"
+plug "zap-zsh/exa"
+plug "zap-zsh/completions"
 
-antigen use oh-my-zsh
-antigen bundle git
-antigen bundle git-extras
-antigen bundle archlinux
-antigen bundle npm
-antigen bundle python
-antigen bundle pip
-antigen bundle sudo
-antigen bundle yarn
-
-antigen bundle zsh-users/zsh-autosuggestions
-antigen bundle zsh-users/zsh-completions
-antigen bundle zsh-users/zsh-syntax-highlighting
-antigen bundle zsh-users/zsh-history-substring-search
+plug "zsh-users/zsh-autosuggestions"
+plug "zsh-users/zsh-syntax-highlighting"
+plug "zsh-users/zsh-completions"
+plug "zsh-users/zsh-history-substring-search"
 
 eval "$(starship init zsh)"
 
-antigen apply
 
 DENO_INSTALL="$HOME/.deno"
 
