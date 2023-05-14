@@ -37,6 +37,8 @@ Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'haishanh/night-owl.vim'
 Plug 'alker0/chezmoi.vim'
 Plug 'Lilja/vim-chezmoi'
+Plug 'nvim-lua/plenary.nvim'
+Plug 'sindrets/diffview.nvim'
 
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
