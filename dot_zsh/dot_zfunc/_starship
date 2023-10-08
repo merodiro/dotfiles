@@ -104,11 +104,13 @@ _arguments "${_arguments_options[@]}" \
 ;;
 (preset)
 _arguments "${_arguments_options[@]}" \
+'(-l --list)-o+[Output the preset to a file instead of stdout]:OUTPUT:_files' \
+'(-l --list)--output=[Output the preset to a file instead of stdout]:OUTPUT:_files' \
 '-l[List out all preset names]' \
 '--list[List out all preset names]' \
 '-h[Print help]' \
 '--help[Print help]' \
-'::name -- The name of preset to be printed:(no-runtime-versions bracketed-segments plain-text-symbols no-empty-icons tokyo-night no-nerd-font pastel-powerline pure-preset nerd-font-symbols)' \
+'::name -- The name of preset to be printed:(bracketed-segments plain-text-symbols pure-preset no-nerd-font tokyo-night nerd-font-symbols pastel-powerline no-runtime-versions no-empty-icons)' \
 && ret=0
 ;;
 (print-config)
@@ -438,4 +440,8 @@ _starship__toggle_commands() {
     _describe -t commands 'starship toggle commands' commands "$@"
 }
 
-_starship "$@"
+if [ "$funcstack[1]" = "_starship" ]; then
+    _starship "$@"
+else
+    compdef _starship starship
+fi
