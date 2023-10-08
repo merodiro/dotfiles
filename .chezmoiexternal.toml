@@ -1,0 +1,18 @@
+[".bin/executable_cht"]
+    type = "file"
+    url = "https://cht.sh/:cht.sh"
+    refreshPeriod = "168h"
+    executable = true
+
+
+[".bin/executable_tldr"]
+    type = "file"
+    url = "https://raw.githubusercontent.com/raylee/tldr/master/tldr"
+    refreshPeriod = "168h"
+    executable = true
+
+
+[".antidote"]
+    type = "git-repo"
+    url = "https://github.com/mattmc3/antidote.git"
+    refreshPeriod = "168h"
