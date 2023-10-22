@@ -1,11 +1,11 @@
-[".bin/executable_cht"]
+[".local/bin/cht"]
     type = "file"
     url = "https://cht.sh/:cht.sh"
     refreshPeriod = "168h"
     executable = true
 
 
-[".bin/executable_tldr"]
+[".local/bin/tldr"]
     type = "file"
     url = "https://raw.githubusercontent.com/raylee/tldr/master/tldr"
     refreshPeriod = "168h"
