@@ -1,12 +1,12 @@
 {{ if (eq .chezmoi.os "darwin") -}}
 # Fig pre block. Keep at the top of this file.
-[[ -f "$HOME/.fig/shell/profile.pre.bash" ]] && builtin source "$HOME/.fig/shell/profile.pre.bash"
+[[ -f "$HOME/.fig/shell/zprofile.pre.zsh" ]] && builtin source "$HOME/.fig/shell/zprofile.pre.zsh"
 {{ end }}
+
 export XDG_CONFIG_HOME="$HOME/.config"
 
-. "$HOME/.cargo/env"
 
 {{ if (eq .chezmoi.os "darwin") -}}
 # Fig post block. Keep at the bottom of this file.
-[[ -f "$HOME/.fig/shell/profile.post.bash" ]] && builtin source "$HOME/.fig/shell/profile.post.bash"
+[[ -f "$HOME/.fig/shell/zprofile.post.zsh" ]] && builtin source "$HOME/.fig/shell/zprofile.post.zsh"
 {{ end }}
