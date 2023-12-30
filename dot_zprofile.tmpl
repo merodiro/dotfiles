@@ -3,8 +3,6 @@
 [[ -f "$HOME/.fig/shell/zprofile.pre.zsh" ]] && builtin source "$HOME/.fig/shell/zprofile.pre.zsh"
 {{ end }}
 
-export XDG_CONFIG_HOME="$HOME/.config"
-
 
 {{ if (eq .chezmoi.os "darwin") -}}
 # Fig post block. Keep at the bottom of this file.
