@@ -9,7 +9,7 @@ M.treesitter = {
     "javascript",
     "typescript",
     "tsx",
-    "c",
+    -- "c",
     "markdown",
     "markdown_inline",
   },
@@ -31,12 +31,12 @@ M.mason = {
     "css-lsp",
     "html-lsp",
     "typescript-language-server",
-    "deno",
+    -- "deno",
     "prettier",
 
     -- c/cpp stuff
-    "clangd",
-    "clang-format",
+    -- "clangd",
+    -- "clang-format",
   },
 }
 
