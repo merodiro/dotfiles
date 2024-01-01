@@ -2,13 +2,12 @@
 #!/bin/bash
 
 brew bundle --no-lock --file=/dev/stdin <<EOF
-brew "bat"
-brew "cheat"
-brew "exa"
-brew "fzf"
-brew "gh"
-brew "git"
-brew "jq"
-
+{{ range .packages.darwin.brews -}}
+brew {{ . | quote }}
+{{ end -}}
+{{ range .packages.darwin.casks -}}
+cask {{ . | quote }}
+{{ end -}}
 EOF
+
 {{ end -}}

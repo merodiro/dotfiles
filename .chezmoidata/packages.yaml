@@ -1,0 +1,17 @@
+packages:
+  darwin:
+    brews:
+      - "bat"
+      - "cheat"
+      - "exa"
+      - "fzf"
+      - "gh"
+      - "jq"
+      - "ripgrep"
+      - "starship"
+      - "zellij"
+      - "zoxide"
+
+    casks:
+      - "iterm2"
+
