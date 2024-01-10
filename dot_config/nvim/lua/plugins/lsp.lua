@@ -3,7 +3,7 @@ return {
 	'neovim/nvim-lspconfig',
 	dependencies = {
 		-- Automatically install LSPs to stdpath for neovim
-		{ 'williamboman/mason.nvim', config = true },
+		{ 'williamboman/mason.nvim', config = true, lazy = false },
 		'williamboman/mason-lspconfig.nvim',
 
 		-- Useful status updates for LSP
@@ -13,6 +13,8 @@ return {
 		-- Additional lua configuration, makes nvim stuff amazing!
 		'folke/neodev.nvim',
 	},
+	cmd = { 'LspInfo', 'LspInstall', 'LspStart' },
+	event = { 'BufReadPre', 'BufNewFile' },
 	config = function()
 		--  This function gets run when an LSP connects to a particular buffer.
 		local on_attach = function(_, bufnr)
