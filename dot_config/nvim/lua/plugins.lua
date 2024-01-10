@@ -7,7 +7,7 @@ return {
   --  The configuration is done below. Search for lspconfig to find it below.
 
   -- Useful plugin to show you pending keybinds.
-  { 'folke/which-key.nvim',  opts = {} },
+  { 'folke/which-key.nvim', opts = {} },
 
   {
     -- Add indentation guides even on blank lines
@@ -19,6 +19,10 @@ return {
   },
 
   -- "gc" to comment visual regions/lines
-  { 'numToStr/Comment.nvim', opts = {} },
+  {
+    'numToStr/Comment.nvim',
+    opts = {},
+    event = "VeryLazy",
+  },
 
 }
