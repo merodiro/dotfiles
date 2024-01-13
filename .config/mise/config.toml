@@ -1,0 +1,14 @@
+[settings]
+experimental = true
+
+[tools]
+"cargo:cargo-binstall" = "latest"
+"cargo:eza" = "latest"
+"cargo:bat" = "latest"
+"cargo:zellij" = "latest"
+"cargo:gitui" = "latest"
+"cargo:ripgrep" = "latest"
+"cargo:starship" = "latest"
+bun = "latest"
+go = "1.21"
+node = "20"

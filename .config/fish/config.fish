@@ -22,3 +22,4 @@ if status --is-login
 end
 
 starship init fish | source
+~/.local/bin/mise activate fish | source
