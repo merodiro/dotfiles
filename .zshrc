@@ -41,11 +41,13 @@ source $zsh_plugins
 
 # eval "$(starship init zsh)"
 
+system_type=$(uname -s)
 
-
-# darwin
-export ANDROID_HOME=$HOME/Library/Android/sdk
-
+if [ "$system_type" = "Darwin" ]; then
+  export ANDROID_HOME=$HOME/Library/Android/sdk
+elif [ "$system_type" = "Darwin" ]; then
+  export ANDROID_HOME=$HOME/Android/Sdk
+fi
 
 PATH=$PATH:$ANDROID_HOME/emulator
 PATH=$PATH:$ANDROID_HOME/tools
