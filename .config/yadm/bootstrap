@@ -6,3 +6,14 @@ cd "$HOME"
 
 echo "Init submodules"
 yadm submodule update --recursive --init
+
+# Install rust for mise packages
+curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh -s -- -y
+
+# install cargo binstall to speedup cargo deps
+curl -L --proto '=https' --tlsv1.2 -sSf https://raw.githubusercontent.com/cargo-bins/cargo-binstall/main/install-from-binstall-release.sh | bash
+
+# Install mise to install other dependancies
+curl https://mise.jdx.dev/install.sh | sh
+
+mise install
