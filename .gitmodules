@@ -1,9 +1,11 @@
 [submodule ".config/alacritty/themes"]
 	path = .config/alacritty/themes
 	url = https://github.com/alacritty/alacritty-theme
+
 [submodule ".antidote"]
 	path = .antidote
 	url = https://github.com/mattmc3/antidote.git
+
 [submodule ".config/AstroNvim"]
 	path = .config/AstroNvim
 	url = https://github.com/AstroNvim/AstroNvim
