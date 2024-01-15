@@ -1,0 +1,12 @@
+; DO NOT EDIT (unless you know what you are doing)
+;
+; This subdirectory is a git "subrepo", and this file is maintained by the
+; git-subrepo command. See https://github.com/ingydotnet/git-subrepo#readme
+;
+[subrepo]
+	remote = https://github.com/AstroNvim/AstroNvim
+	branch = main
+	commit = c719b16bd1d9710bc0d7dd73ea81985a3cc4024d
+	parent = e3378b71c651652894b569ca7735ae0d16b2c1d1
+	method = merge
+	cmdver = 0.4.6
