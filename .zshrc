@@ -61,8 +61,8 @@ PATH="$HOME/.fnm:$PATH"
 PATH="$HOME/.cargo/bin:$PATH"
 PATH="$HOME/.kit/bin:$PATH"
 PATH="$HOME/.deno/bin:$PATH"
+PATH="$HOME/.local/share/bob/nvim-bin/:$PATH"
 PATH="/usr/local/go/bin:$PATH"
-
 source ~/.bash_aliases
 
 
@@ -83,6 +83,9 @@ setopt INC_APPEND_HISTORY
 setopt HIST_IGNORE_DUPS
 
 fpath+=~/.zsh/.zfunc
+
+autoload -Uz compinit && compinit
+
 
 . "$HOME/.cargo/env"
 

@@ -9,6 +9,7 @@ experimental = true
 "cargo:gitui" = "latest"
 "cargo:ripgrep" = "latest"
 "cargo:starship" = "latest"
+"cargo:bob-nvim" = "latest"
 bun = "latest"
 go = "1.21"
 node = "20"
