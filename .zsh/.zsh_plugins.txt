@@ -1,3 +1,5 @@
+romkatv/zsh-defer
+
 # prompt plugins
 romkatv/powerlevel10k
 
@@ -11,5 +13,6 @@ zsh-users/zsh-completions
 # deferred plugins
 olets/zsh-abbr
 zsh-users/zsh-autosuggestions
-zdharma-continuum/fast-syntax-highlighting
+zdharma-continuum/fast-syntax-highlighting kind:defer
 zsh-users/zsh-history-substring-search
+
