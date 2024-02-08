@@ -11,5 +11,5 @@ experimental = true
 "cargo:starship" = "latest"
 "cargo:bob-nvim" = "latest"
 bun = "latest"
-go = "1.21"
-node = "20"
+go = "latest"
+"go:github.com/jesseduffield/lazygit" = "latest"
