@@ -34,7 +34,7 @@ autocmd("BufWritePre", {
   desc = "Automatically create parent directories if they don't exist when saving a file",
   group = augroup("create_dir", { clear = true }),
   callback = function(args)
-    if args.match:match("^%w%w+:" .. (vim.fn.has "win32" == 0 and "//" or "\\\\")) then return end
+    if not require("astronvim.utils.buffer").is_valid(args.buf) then return end
     vim.fn.mkdir(vim.fn.fnamemodify(vim.loop.fs_realpath(args.match) or args.match, ":p:h"), "p")
   end,
 })
@@ -344,7 +344,7 @@ autocmd({ "BufReadPost", "BufNewFile", "BufWritePost" }, {
   desc = "AstroNvim user events for file detection (AstroFile and AstroGitFile)",
   group = augroup("file_user_events", { clear = true }),
   callback = function(args)
-    local current_file = vim.fn.resolve(vim.fn.expand "%")
+    local current_file = vim.api.nvim_buf_get_name(args.buf)
     if not (current_file == "" or vim.api.nvim_get_option_value("buftype", { buf = args.buf }) == "nofile") then
       astroevent "File"
       if

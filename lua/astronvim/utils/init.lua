@@ -74,7 +74,7 @@ end
 ---@param condition boolean # Whether to run the function or not
 ---@return any|nil result # the result of the function running or nil
 function M.conditional_func(func, condition, ...)
-  -- if the condition is true or no condition is provided, evaluate the function with the rest of the parameters and return the result
+  -- if the condition is true, evaluate the function with the rest of the parameters and return the result
   if condition and type(func) == "function" then return func(...) end
 end
 
@@ -165,8 +165,8 @@ function M.system_open(path)
       cmd = { "cmd.exe", "/K", "explorer" }
     end
   elseif vim.fn.has "unix" == 1 then
-    if vim.fn.executable "wslview" == 1 then
-      cmd = { "wslview" }
+    if vim.fn.executable "explorer.exe" == 1 then -- available in WSL
+      cmd = { "explorer.exe" }
     elseif vim.fn.executable "xdg-open" == 1 then
       cmd = { "xdg-open" }
     end
