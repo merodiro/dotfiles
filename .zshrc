@@ -13,7 +13,6 @@ export EDITOR=nvim
 # plug "zsh-users/zsh-syntax-highlighting"
 # plug "zsh-users/zsh-completions"
 # plug "zsh-users/zsh-history-substring-search"
-# plug "$HOME/.zsh/plugins/zsh-fnm.plugin.zsh"
 
 # Set the name of the static .zsh plugins file antidote will generate.
 zsh_plugins=${ZDOTDIR:-$HOME}/.zsh/.zsh_plugins
@@ -55,7 +54,6 @@ PATH="$HOME/.yarn/bin:$PATH"
 PATH="$HOME/go/bin:$PATH"
 PATH="$HOME/.local/bin/:$PATH"
 PATH="$HOME/.bin:$PATH"
-PATH="$HOME/.fnm:$PATH"
 PATH="$HOME/.cargo/bin:$PATH"
 PATH="$HOME/.kit/bin:$PATH"
 PATH="$HOME/.deno/bin:$PATH"
@@ -103,8 +101,6 @@ bindkey '^[[B' history-substring-search-down
 
 bindkey "$terminfo[kcuu1]" history-substring-search-up
 bindkey "$terminfo[kcud1]" history-substring-search-down
-
-eval "$(fnm env --shell zsh --use-on-cd)"
 
 # Switch nvim config https://gist.github.com/elijahmanor/b279553c0132bfad7eae23e34ceb593b
 alias nvim-chad="NVIM_APPNAME=NvChad nvim"
