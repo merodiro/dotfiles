@@ -1,5 +1,10 @@
-# CodeWhisperer pre block. Keep at the top of this file.
-[[ -f "${HOME}/Library/Application Support/codewhisperer/shell/zshrc.pre.zsh" ]] && builtin source "${HOME}/Library/Application Support/codewhisperer/shell/zshrc.pre.zsh"
+# Enable Powerlevel10k instant prompt. Should stay close to the top of ~/.zshrc.
+# Initialization code that may require console input (password prompts, [y/n]
+# confirmations, etc.) must go above this block; everything else may go below.
+if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]; then
+  source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
+fi
+
 export MANPAGER="sh -c 'col -bx | bat -l man -p'"
 export EDITOR=nvim
 
@@ -88,12 +93,7 @@ autoload -Uz compinit && compinit
 export WASMTIME_HOME="$HOME/.wasmtime"
 
 export PATH="$WASMTIME_HOME/bin:$PATH"
-# Bun completions
-[ -s "/home/amr/.bun/_bun" ] && source "/home/amr/.bun/_bun"
 
-# Bun
-export BUN_INSTALL="/home/amr/.bun"
-export PATH="$BUN_INSTALL/bin:$PATH"
 
 # bind up and down to history search
 bindkey '^[[A' history-substring-search-up
@@ -126,11 +126,7 @@ export FZF_DEFAULT_OPTS=" \
 
 zsh-defer fast-theme XDG:catppuccin-mocha --quiet
 
-eval "$(~/.local/bin/mise activate zsh)"
-
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
 eval "$(rbenv init - zsh)"
-
-# CodeWhisperer post block. Keep at the bottom of this file.
-[[ -f "${HOME}/Library/Application Support/codewhisperer/shell/zshrc.post.zsh" ]] && builtin source "${HOME}/Library/Application Support/codewhisperer/shell/zshrc.post.zsh"
+eval "$(mise activate zsh)"

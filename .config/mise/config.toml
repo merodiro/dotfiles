@@ -2,14 +2,14 @@
 experimental = true
 
 [tools]
-"cargo:cargo-binstall" = "latest"
-"cargo:eza" = "latest"
-"cargo:bat" = "latest"
-"cargo:zellij" = "latest"
-"cargo:gitui" = "latest"
-"cargo:ripgrep" = "latest"
-"cargo:starship" = "latest"
-"cargo:bob-nvim" = "latest"
 bun = "latest"
-go = "latest"
-"go:github.com/jesseduffield/lazygit" = "latest"
+"ubi:jesseduffield/lazygit" = "latest"
+"ubi:sharkdp/bat" = "latest"
+"ubi:zellij-org/zellij" = "latest"
+node = "22"
+"aqua:BurntSushi/ripgrep" = "latest"
+"aqua:extrawurst/gitui" = "latest"
+"aqua:starship/starship" = "latest"
+"aqua:MordechaiHadad/bob" = "latest"
+"eza" = "latest"
+
