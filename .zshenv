@@ -1,1 +1,1 @@
-. /Users/m/.config/zsh/.zshenv
+. ~/.config/zsh/.zshenv
