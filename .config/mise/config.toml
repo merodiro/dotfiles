@@ -2,14 +2,17 @@
 experimental = true
 
 [tools]
-bun = "latest"
-"ubi:jesseduffield/lazygit" = "latest"
-"ubi:sharkdp/bat" = "latest"
-"ubi:zellij-org/zellij" = "latest"
+"ubi:MordechaiHadad/bob" = "latest"
 node = "22"
-"aqua:BurntSushi/ripgrep" = "latest"
-"aqua:extrawurst/gitui" = "latest"
-"aqua:starship/starship" = "latest"
-"aqua:MordechaiHadad/bob" = "latest"
-"eza" = "latest"
+eza = "latest"
+starship = "latest"
+ripgrep = "latest"
+zellij = "latest"
+lazygit = "latest"
+bat-extras = "latest"
+bat = "latest"
+difftastic = "latest"
+fzf = "latest"
+zoxide = "latest"
+usage = "latest"
 
