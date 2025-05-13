@@ -8,7 +8,7 @@
 PS1='[\u@\h \W]\$ '
 
 HISTCONTROL=ignoreboth
-EDITOR=nvim
+export EDITOR=nvim
 PATH="$PATH:$HOME/.config/composer/vendor/bin"
 PATH="$PATH:$HOME/.yarn/bin"
 PATH="$PATH:$HOME/.cargo/bin/"
@@ -23,12 +23,6 @@ PATH="$PATH:$HOME/.deno/bin"
 shopt -s checkwinsize
 
 shopt -s expand_aliases
-
-# screenfetch
-export GPG_TTY=$(tty)
-export NVM_DIR="$HOME/.nvm"
-[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"                   # This loads nvm
-[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion" # This loads nvm bash_completion
 
 if [ -f ~/.bash_aliases ]; then
   . ~/.bash_aliases
