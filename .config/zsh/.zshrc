@@ -46,6 +46,8 @@ if [ "$system_type" = "Darwin" ]; then
   export ANDROID_HOME=$HOME/Library/Android/sdk
 elif [ "$system_type" = "Darwin" ]; then
   export ANDROID_HOME=$HOME/Android/Sdk
+elif [[ "$system_type" = "Linux" ]]; then
+  export ANDROID_HOME="$HOME/Android/Sdk"
 fi
 
 PATH=$PATH:$ANDROID_HOME/emulator
@@ -60,6 +62,8 @@ PATH="$HOME/.cargo/bin:$PATH"
 PATH="$HOME/.kit/bin:$PATH"
 PATH="$HOME/.deno/bin:$PATH"
 PATH="$HOME/.local/share/bob/nvim-bin/:$PATH"
+PATH="$HOME/.opencode/bin:$PATH"
+PATH="$HOME/.cache/.bun/bin:$PATH"
 PATH="/usr/local/go/bin:$PATH"
 
 fpath+=~/.config/zsh/completions/
@@ -76,4 +80,6 @@ fast-theme XDG:catppuccin-mocha --quiet
 
 eval "$(mise activate zsh)"
 
-export SSH_AUTH_SOCK=~/.bitwarden-ssh-agent.sock
+# export SSH_AUTH_SOCK=~/.bitwarden-ssh-agent.sock
+
+. "$HOME/.local/share/../bin/env"

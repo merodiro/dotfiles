@@ -34,3 +34,4 @@ eval "$(starship init bash)"
 . "$HOME/.cargo/env"
 
 eval "$(mise activate bash)"
+

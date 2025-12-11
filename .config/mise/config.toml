@@ -3,7 +3,7 @@ experimental = true
 
 [tools]
 "ubi:MordechaiHadad/bob" = "latest"
-node = "22"
+node = "lts"
 eza = "latest"
 starship = "latest"
 ripgrep = "latest"

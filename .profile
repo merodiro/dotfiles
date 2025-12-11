@@ -4,4 +4,3 @@ if [[ "$TERM_PROGRAM" == "vscode" ]]; then
 elif; then
   eval "$($HOME/.local/bin/mise activate bash)"
 fi
-
