@@ -19,7 +19,7 @@ zstyle ':plugin:ez-compinit' 'use-cache' 'yes'
 zstyle ':zephyr:plugin:editor' key-bindings 'vi'
 
 # Auto convert .... to ../..
-zstyle ':zephyr:plugin:editor' dot-expansion 'yes'
+zstyle ':zephyr:plugin:editor' dot-expansion 'no'
 
 # Use ^z to return background processes to foreground.
 zstyle ':zephyr:plugin:editor' symmetric-ctrl-z 'yes'

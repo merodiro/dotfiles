@@ -74,7 +74,6 @@ ZSH_AUTOSUGGEST_STRATEGY=(history completion)
 
 HISTORY_SUBSTRING_SEARCH_HIGHLIGHT_FOUND='bg=#cba6f7,fg=#181825,bold'
 HISTORY_SUBSTRING_SEARCH_HIGHLIGHT_NOT_FOUND='bg=#f38ba8,fg=#181825,bold'
-. "$HOME/.cargo/env"
 
 fast-theme XDG:catppuccin-mocha --quiet
 
@@ -82,4 +81,4 @@ eval "$(mise activate zsh)"
 
 # export SSH_AUTH_SOCK=~/.bitwarden-ssh-agent.sock
 
-. "$HOME/.local/share/../bin/env"
+# . "$HOME/.local/share/../bin/env"
