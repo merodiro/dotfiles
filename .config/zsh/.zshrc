@@ -64,6 +64,7 @@ PATH="$HOME/.deno/bin:$PATH"
 PATH="$HOME/.local/share/bob/nvim-bin/:$PATH"
 PATH="$HOME/.opencode/bin:$PATH"
 PATH="$HOME/.cache/.bun/bin:$PATH"
+PATH="$HOME/.meteor:$PATH"
 PATH="/usr/local/go/bin:$PATH"
 
 fpath+=~/.config/zsh/completions/

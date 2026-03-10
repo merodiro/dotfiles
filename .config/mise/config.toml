@@ -2,7 +2,7 @@
 experimental = true
 
 [tools]
-"ubi:MordechaiHadad/bob" = "latest"
+bob = "latest"
 node = "lts"
 eza = "latest"
 starship = "latest"
