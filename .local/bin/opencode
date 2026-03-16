@@ -1,0 +1,7 @@
+#!/bin/sh
+
+exec firejail \
+  --profile="${HOME}/.config/firejail/opencode.profile" \
+  --whitelist="$PWD" \
+  --quiet \
+  /usr/bin/opencode "$@"
