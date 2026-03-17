@@ -78,6 +78,9 @@ mkdir ${HOME}/.local/share/opencode
 whitelist ${HOME}/.cache/opencode
 mkdir ${HOME}/.cache/opencode
 
+whitelist ${HOME}/.local/state/opencode
+mkdir ${HOME}/.local/state/opencode
+
 whitelist ${HOME}/.local/share/opentui
 mkdir ${HOME}/.local/share/opentui
 
