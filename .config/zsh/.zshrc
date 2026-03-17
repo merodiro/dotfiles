@@ -54,6 +54,7 @@ PATH=$PATH:$ANDROID_HOME/emulator
 PATH=$PATH:$ANDROID_HOME/tools
 PATH=$PATH:$ANDROID_HOME/tools/bin
 PATH=$PATH:$ANDROID_HOME/platform-tools
+PATH="$HOME/.local/bin:$PATH"
 PATH="$HOME/.yarn/bin:$PATH"
 PATH="$HOME/go/bin:$PATH"
 PATH="$HOME/.local/bin/:$PATH"
@@ -82,4 +83,12 @@ eval "$(mise activate zsh)"
 
 # export SSH_AUTH_SOCK=~/.bitwarden-ssh-agent.sock
 
-# . "$HOME/.local/share/../bin/env"
+# pnpm
+export PNPM_HOME="/home/amr/.local/share/pnpm"
+case ":$PATH:" in
+  *":$PNPM_HOME:"*) ;;
+  *) export PATH="$PNPM_HOME:$PATH" ;;
+esac
+# pnpm end
+
+if command -v wt >/dev/null 2>&1; then eval "$(command wt config shell init zsh)"; fi
