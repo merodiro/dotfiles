@@ -1,0 +1,19 @@
+#!/bin/sh
+WHITELIST_ARGS="--whitelist=$PWD"
+
+# Whitelist all git worktree paths so opencode works whether launched
+# from the main repo or from inside a worktree.
+if git -C "$PWD" rev-parse --git-dir >/dev/null 2>&1; then
+  while IFS= read -r wt; do
+    [ "$wt" != "$PWD" ] && WHITELIST_ARGS="$WHITELIST_ARGS --whitelist=$wt"
+  done <<EOF
+$(git -C "$PWD" worktree list --porcelain 2>/dev/null | awk '/^worktree /{print $2}')
+EOF
+fi
+
+exec firejail \
+  --profile="${HOME}/.config/firejail/opencode.profile" \
+  $WHITELIST_ARGS \
+  --env=GH_CONFIG_DIR="${HOME}/.config/gh-sandbox" \
+  --quiet \
+  /usr/bin/opencode "$@"

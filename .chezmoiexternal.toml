@@ -1,0 +1,16 @@
+[".config/alacritty/themes"]
+    type = "git-repo"
+    url = "https://github.com/alacritty/alacritty-theme"
+    refreshPeriod = "168h"
+
+[".local/bin/tldr"]
+    type = "file"
+    url = "https://raw.githubusercontent.com/raylee/tldr/master/tldr"
+    refreshPeriod = "168h"
+    executable = true
+
+[".local/bin/cht"]
+    type = "file"
+    url = "https://cht.sh/:cht.sh"
+    refreshPeriod = "168h"
+    executable = true
