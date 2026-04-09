@@ -20,7 +20,7 @@ romkatv/powerlevel10k
 
 # general plugins
 mattmc3/zman
-agkozak/zsh-z
+# agkozak/zsh-z  # replaced by zoxide
 
 
 # Utilities
@@ -32,11 +32,11 @@ mattmc3/zephyr path:plugins/confd
 mattmc3/zephyr path:plugins/directory
 mattmc3/zephyr path:plugins/history
 mattmc3/zephyr path:plugins/utility
-romkatv/zsh-bench kind:path
+# romkatv/zsh-bench kind:path
 ohmyzsh/ohmyzsh path:plugins/extract
-olets/zsh-abbr
+# olets/zsh-abbr
 
 # Other Fish-like features
 zdharma-continuum/fast-syntax-highlighting  # Syntax highlighting
 zsh-users/zsh-autosuggestions               # Auto-suggestions
-zsh-users/zsh-history-substring-search      # Up/Down to search history
+# zsh-users/zsh-history-substring-search      # Up/Down to search history replaced by atuin
