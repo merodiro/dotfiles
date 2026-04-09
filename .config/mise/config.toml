@@ -1,6 +1,9 @@
 [settings]
 experimental = true
 
+[settings.npm]
+package_manager = "pnpm"
+
 [tools]
 bob = "latest"
 node = "lts"
@@ -12,6 +15,7 @@ lazygit = "latest"
 bat-extras = "latest"
 bat = "latest"
 difftastic = "latest"
+delta = "latest"
 fzf = "latest"
 zoxide = "latest"
 usage = "latest"
