@@ -38,7 +38,7 @@ _arguments "${_arguments_options[@]}" : \
 _arguments "${_arguments_options[@]}" : \
 '-h[Print help]' \
 '--help[Print help]' \
-':shell:(bash elvish fish powershell zsh)' \
+':shell:(bash elvish fish nushell powershell zsh)' \
 && ret=0
 ;;
 (config)
@@ -112,7 +112,7 @@ _arguments "${_arguments_options[@]}" : \
 '--list[List out all preset names]' \
 '-h[Print help]' \
 '--help[Print help]' \
-'::name -- The name of preset to be printed:(bracketed-segments gruvbox-rainbow jetpack nerd-font-symbols no-empty-icons no-nerd-font no-runtime-versions pastel-powerline plain-text-symbols pure-preset tokyo-night)' \
+'::name -- The name of preset to be printed:(bracketed-segments catppuccin-powerline gruvbox-rainbow jetpack nerd-font-symbols no-empty-icons no-nerd-font no-runtime-versions pastel-powerline plain-text-symbols pure-preset tokyo-night)' \
 && ret=0
 ;;
 (print-config)
