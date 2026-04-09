@@ -44,11 +44,10 @@ restrict-namespaces
 # FILESYSTEM ISOLATION
 # ============================================================================
 
-# Undo blacklists from disable-programs.inc that opencode legitimately needs.
-# These must come BEFORE the include or the blacklist wins.
+include allow-common-devel.inc
+
+# pnpm is not covered by allow-common-devel.inc
 noblacklist ${HOME}/.local/share/pnpm
-noblacklist ${HOME}/.npm
-noblacklist ${HOME}/.npmrc
 
 include disable-common.inc
 include disable-programs.inc
@@ -94,7 +93,6 @@ mkdir ${HOME}/.local/share/opentui
 # ============================================================================
 
 # Git identity and config
-# whitelist makes the path visible in the home tmpfs; read-only restricts writes.
 whitelist ${HOME}/.gitconfig
 read-only ${HOME}/.gitconfig
 whitelist ${HOME}/.gitignore
@@ -113,8 +111,23 @@ whitelist ${HOME}/.local/state/mise
 whitelist ${HOME}/.cache/mise
 whitelist ${HOME}/.npm
 whitelist ${HOME}/.local/share/pnpm
-whitelist ${HOME}/.cache/node/corepack
+whitelist ${HOME}/.cache/node
+whitelist ${HOME}/.npmrc
+read-only ${HOME}/.npmrc
 whitelist ${HOME}/.cache/ms-playwright
+
+# GitHub CLI — sandboxed read-only token, path set via wrapper script
+whitelist ${HOME}/.config/gh-sandbox
+read-only ${HOME}/.config/gh-sandbox
+
+# GitButler
+whitelist ${HOME}/.config/gitbutler
+read-only ${HOME}/.config/gitbutler
+whitelist ${HOME}/.local/share/com.gitbutler.app
+
+# Force pnpm to use the global content-addressable store rather than falling
+# back to a project-local .pnpm-store inside the sandbox.
+env npm_config_store_dir=${HOME}/.local/share/pnpm/store
 
 # ============================================================================
 # NETWORK

@@ -1,0 +1,142 @@
+#!/bin/sh
+set -eu
+
+# ==========================================================================
+# Bubblewrap sandbox wrapper for opencode
+# ==========================================================================
+#
+# Usage: opencode-bwrap [opencode args...]
+#
+# Launches opencode inside a bubblewrap namespace with:
+#   - Empty home directory (only explicitly mounted paths are visible)
+#   - Read-write access to opencode state, project dir, and package caches
+#   - Read-only access to dev toolchain (mise, local binaries)
+#   - Minimal /etc (TLS, DNS, POSIX basics)
+#   - Full network access (needed for AI provider APIs)
+#   - Isolated /tmp, PID namespace, no capabilities
+
+if [ -n "${SANDBOX_DEBUG:-}" ]; then
+  SANDBOX_CMD="$@"
+else
+  SANDBOX_CMD="/usr/bin/opencode $*"
+fi
+
+# --------------------------------------------------------------------------
+# Helpers — build bind arguments only if the path exists on the host
+# --------------------------------------------------------------------------
+RW_BINDS=""
+RO_BINDS=""
+
+bind_rw() { RW_BINDS="$RW_BINDS --bind-try $1 $1"; }
+bind_ro() { RO_BINDS="$RO_BINDS --ro-bind-try $1 $1"; }
+
+# --------------------------------------------------------------------------
+# Opencode state (read-write)
+# --------------------------------------------------------------------------
+bind_rw "$HOME/.config/opencode"
+bind_rw "$HOME/.local/share/opencode"
+bind_rw "$HOME/.cache/opencode"
+bind_rw "$HOME/.local/state/opencode"
+bind_rw "$HOME/.local/share/opentui"
+
+# --------------------------------------------------------------------------
+# Package managers (read-write) — caches and stores need write access
+# for installs and updates.
+# --------------------------------------------------------------------------
+bind_rw "$HOME/.npm"
+bind_rw "$HOME/.local/share/pnpm"
+bind_rw "$HOME/.cache/node"
+bind_rw "$HOME/.cache/ms-playwright"
+
+# --------------------------------------------------------------------------
+# Dev toolchain (read-only) — mise installs, local bins/libs
+# --------------------------------------------------------------------------
+bind_ro "$HOME/.local/bin"
+bind_ro "$HOME/.local/lib"
+bind_ro "$HOME/.local/share/mise"
+bind_ro "$HOME/.config/mise"
+bind_ro "$HOME/.local/state/mise"
+bind_ro "$HOME/.cache/mise"
+
+# --------------------------------------------------------------------------
+# Git / GitHub config (read-only)
+# --------------------------------------------------------------------------
+bind_ro "$HOME/.gitconfig"
+bind_ro "$HOME/.npmrc"
+bind_ro "$HOME/.config/git"
+bind_ro "$HOME/.gitignore"
+
+# --------------------------------------------------------------------------
+# GitButler
+# --------------------------------------------------------------------------
+bind_ro "$HOME/.config/gitbutler"
+bind_rw "$HOME/.local/share/com.gitbutler.app"
+
+# --------------------------------------------------------------------------
+# Git worktree detection — bind all worktrees so opencode works whether
+# launched from the main repo or from inside a worktree.
+# --------------------------------------------------------------------------
+WORKTREE_ARGS=""
+if git -C "$PWD" rev-parse --git-dir >/dev/null 2>&1; then
+  while IFS= read -r wt; do
+    [ -n "$wt" ] && [ "$wt" != "$PWD" ] &&
+      WORKTREE_ARGS="$WORKTREE_ARGS --bind $wt $wt"
+  done <<EOF
+$(git -C "$PWD" worktree list --porcelain 2>/dev/null | awk '/^worktree /{print $2}')
+EOF
+fi
+
+# --------------------------------------------------------------------------
+# Launch sandbox
+# --------------------------------------------------------------------------
+# shellcheck disable=SC2086
+exec bwrap \
+  \
+  --unshare-all \
+  --share-net \
+  --die-with-parent \
+  \
+  --ro-bind /usr /usr \
+  --symlink usr/bin /bin \
+  --symlink usr/bin /sbin \
+  --symlink usr/lib /lib \
+  --symlink usr/lib /lib64 \
+  --proc /proc \
+  --dev /dev \
+  --tmpfs /tmp \
+  \
+  --ro-bind /etc/resolv.conf /etc/resolv.conf \
+  --ro-bind /etc/nsswitch.conf /etc/nsswitch.conf \
+  --ro-bind /etc/host.conf /etc/host.conf \
+  --ro-bind /etc/hosts /etc/hosts \
+  --ro-bind /etc/hostname /etc/hostname \
+  --ro-bind /etc/passwd /etc/passwd \
+  --ro-bind /etc/group /etc/group \
+  --ro-bind /etc/shells /etc/shells \
+  --ro-bind /etc/services /etc/services \
+  --ro-bind /etc/mime.types /etc/mime.types \
+  --ro-bind /etc/localtime /etc/localtime \
+  --ro-bind /etc/ssl /etc/ssl \
+  --ro-bind /etc/ca-certificates /etc/ca-certificates \
+  --ro-bind /etc/ld.so.cache /etc/ld.so.cache \
+  --ro-bind /etc/ld.so.conf /etc/ld.so.conf \
+  \
+  --tmpfs "$HOME" \
+  \
+  $RW_BINDS \
+  $RO_BINDS \
+  --ro-bind-try "$HOME/.config/gh-sandbox" "$HOME/.config/gh" \
+  \
+  --bind "$PWD" "$PWD" \
+  $WORKTREE_ARGS \
+  \
+  --setenv HOME "$HOME" \
+  --setenv USER "${USER:-$(id -un)}" \
+  --setenv npm_config_store_dir "$HOME/.local/share/pnpm/store" \
+  --unsetenv DBUS_SESSION_BUS_ADDRESS \
+  --unsetenv WAYLAND_DISPLAY \
+  --unsetenv DISPLAY \
+  --unsetenv XDG_RUNTIME_DIR \
+  \
+  --chdir "$PWD" \
+  -- $SANDBOX_CMD
