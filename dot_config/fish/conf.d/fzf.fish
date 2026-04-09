@@ -7,4 +7,4 @@ set -Ux FZF_DEFAULT_OPTS "\
 --color=selected-bg:#45475a \
 --color=border:#313244,label:#cdd6f4"
 
-fzf --fish | source
+fzf --fish | FZF_CTRL_R_COMMAND= source

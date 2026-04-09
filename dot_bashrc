@@ -28,7 +28,7 @@ if [ -f ~/.bash_aliases ]; then
   . ~/.bash_aliases
 fi
 
-[ -f ~/.fzf.bash ] && source ~/.fzf.bash
+FZF_CTRL_R_COMMAND= eval "$(fzf --bash)"
 
 eval "$(starship init bash)"
 . "$HOME/.cargo/env"
