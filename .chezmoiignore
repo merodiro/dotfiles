@@ -2,6 +2,7 @@
 .config/zsh/.zcompdump*
 .config/zsh/.zsh_plugins.zsh
 .config/zsh/.zshrc.local
+.config/mise/config.local.toml
 .gitconfig.local
 .config/firejail/*.local
 lazy-lock.json

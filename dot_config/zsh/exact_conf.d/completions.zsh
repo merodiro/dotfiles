@@ -29,6 +29,12 @@ if (( $+commands[mise] )); then
   fi
 fi
 
+if (( $+commands[fnox] )); then
+  if [[ ! -f "$ZSH_CACHE_DIR/completions/_fnox" || "$commands[fnox]" -nt "$ZSH_CACHE_DIR/completions/_fnox" ]]; then
+    fnox completion zsh >| "$ZSH_CACHE_DIR/completions/_fnox" &|
+  fi
+fi
+
 if (( $+commands[starship] )); then
   if [[ ! -f "$ZSH_CACHE_DIR/completions/_starship" || "$commands[starship]" -nt "$ZSH_CACHE_DIR/completions/_starship" ]]; then
     starship completions zsh >| "$ZSH_CACHE_DIR/completions/_starship" &|
@@ -40,3 +46,4 @@ if (( $+commands[bob] )); then
     bob complete zsh >| "$ZSH_CACHE_DIR/completions/_bob" &|
   fi
 fi
+

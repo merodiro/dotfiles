@@ -20,4 +20,6 @@ fzf = "latest"
 zoxide = "latest"
 atuin = "latest"
 usage = "latest"
+"npm:@antfu/ni" = "latest"
+"forgejo:mergiraf/mergiraf" = "latest"
 
