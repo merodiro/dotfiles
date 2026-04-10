@@ -1,3 +1,8 @@
+[".config/zsh/completions/_eza"]
+    type = "file"
+    url = "https://raw.githubusercontent.com/eza-community/eza/main/completions/zsh/_eza"
+    refreshPeriod = "168h"
+
 [".config/alacritty/themes"]
     type = "git-repo"
     url = "https://github.com/alacritty/alacritty-theme"

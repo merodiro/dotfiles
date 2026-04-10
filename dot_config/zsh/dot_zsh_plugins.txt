@@ -1,0 +1,52 @@
+#!/bin/zsh
+
+# Completions
+zsh-users/zsh-completions kind:fpath path:src
+aloxaf/fzf-tab  # Remove if you don't use fzf
+
+# Keybindings / Completion / Prompt / Utilities from zephyr
+using:mattmc3/zephyr path:plugins
+editor
+compstyle
+completion
+prompt
+macos conditional:is-macos
+color
+confd
+directory
+history
+utility
+
+# prompt plugins
+romkatv/powerlevel10k
+
+# general plugins
+mattmc3/zman
+# agkozak/zsh-z  # replaced by zoxide
+
+# oh-my-zsh plugins
+using:ohmyzsh/ohmyzsh path:plugins
+iterm2 conditional:is-macos
+archlinux conditional:is-arch
+aliases
+chezmoi
+gh
+extract
+eza
+git
+colored-man-pages
+npm
+yarn
+bun
+# olets/zsh-abbr
+
+# git-extras — installed via antidote so it works on any machine
+tj/git-extras kind:path path:bin
+tj/git-extras kind:zsh path:etc/git-extras-completion.zsh
+
+MichaelAquilina/zsh-you-should-use
+
+# Other Fish-like features
+zdharma-continuum/fast-syntax-highlighting  # Syntax highlighting
+zsh-users/zsh-autosuggestions               # Auto-suggestions
+# zsh-users/zsh-history-substring-search      # Up/Down to search history replaced by atuin

@@ -16,11 +16,11 @@ fpath=(${ZDOTDIR:-$HOME}/.antidote/functions $fpath)
 autoload -Uz antidote
 
 # Generate static file in a subshell whenever .zsh_plugins.txt is updated.
-zplugins=${ZDOTDIR:-~}/.zplugins
-if [[ ! ${zplugins}.zsh -nt ${zplugins} ]] || [[ ! -e $ANTIDOTE_HOME/.lastupdated ]]; then
-  antidote bundle <${zplugins} >|${zplugins}.zsh
+zsh_plugins=${ZDOTDIR:-~}/.zsh_plugins
+if [[ ! ${zsh_plugins}.zsh -nt ${zsh_plugins}.txt ]] || [[ ! -e $ANTIDOTE_HOME/.lastupdated ]]; then
+  antidote bundle <${zsh_plugins}.txt >|${zsh_plugins}.zsh
   date +%Y-%m-%dT%H:%M:%S%z >| $ANTIDOTE_HOME/.lastupdated
 fi
 
 # Source the static file.
-source ${zplugins}.zsh
+source ${zsh_plugins}.zsh

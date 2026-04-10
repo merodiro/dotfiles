@@ -16,6 +16,11 @@ autoload -Uz $ZFUNCDIR/*(.:t)
 # Set any zstyles you might use for configuration.
 [[ ! -f ${ZDOTDIR:-$HOME}/.zstyles ]] || source ${ZDOTDIR:-$HOME}/.zstyles
 
+# eza
+zstyle ':omz:plugins:eza' 'dirs-first' yes
+zstyle ':omz:plugins:eza' 'git-status' yes
+zstyle ':omz:plugins:eza' 'icons' yes
+
 #
 # Libs
 #
