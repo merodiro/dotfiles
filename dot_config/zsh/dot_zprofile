@@ -1,6 +1,6 @@
 # mise
 if [[ "$TERM_PROGRAM" == "vscode" ]]; then
   eval "$($HOME/.local/bin/mise activate zsh --shims)"
-elif; then
+else
   eval "$($HOME/.local/bin/mise activate zsh)"
 fi

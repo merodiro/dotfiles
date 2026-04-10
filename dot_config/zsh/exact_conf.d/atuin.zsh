@@ -1,6 +1,10 @@
 if ! command -v atuin >/dev/null 2>&1; then return; fi
 
-eval "$(atuin init zsh --disable-up-arrow)"
+if (( $+functions[cached-eval] )); then
+  cached-eval 'atuin-init-zsh' atuin init zsh --disable-up-arrow
+else
+  eval "$(atuin init zsh --disable-up-arrow)"
+fi
 
 # Reference: https://gist.github.com/tyalie/7e13cfe2ec62d99fa341a07ed12ef7c0
 # But modified to include syntax highlighting of the search query

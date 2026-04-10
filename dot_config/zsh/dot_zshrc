@@ -76,7 +76,11 @@ HISTORY_SUBSTRING_SEARCH_HIGHLIGHT_NOT_FOUND='bg=#f38ba8,fg=#181825,bold'
 
 fast-theme XDG:catppuccin-mocha --quiet
 
-eval "$(mise activate zsh)"
+if (( $+functions[cached-eval] )); then
+  cached-eval 'mise-activate-zsh' mise activate zsh
+else
+  eval "$(mise activate zsh)"
+fi
 
 # export SSH_AUTH_SOCK=~/.bitwarden-ssh-agent.sock
 
