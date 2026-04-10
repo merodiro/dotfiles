@@ -12,10 +12,10 @@ completion
 prompt
 macos conditional:is-macos
 color
-confd
 directory
 history
 utility
+confd
 
 # prompt plugins
 romkatv/powerlevel10k
