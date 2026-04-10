@@ -5,6 +5,12 @@
 # when the tool binary is newer than the cached completion file.
 #
 
+if (( $+commands[usage] )); then
+  if [[ ! -f "$ZSH_CACHE_DIR/completions/_usage" || "$commands[usage]" -nt "$ZSH_CACHE_DIR/completions/_usage" ]]; then
+    usage --completions zsh >| "$ZSH_CACHE_DIR/completions/_usage" &|
+  fi
+fi
+
 if (( $+commands[atuin] )); then
   if [[ ! -f "$ZSH_CACHE_DIR/completions/_atuin" || "$commands[atuin]" -nt "$ZSH_CACHE_DIR/completions/_atuin" ]]; then
     atuin gen-completions --shell zsh >| "$ZSH_CACHE_DIR/completions/_atuin" &|
