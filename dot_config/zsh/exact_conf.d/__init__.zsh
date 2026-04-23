@@ -41,7 +41,12 @@ path=(
 )
 
 # plugin settings — set before plugins source them
-ZSH_AUTOSUGGEST_STRATEGY=(atuin history completion)
+if ! command -v atuin >/dev/null 2>&1;
+then
+  ZSH_AUTOSUGGEST_STRATEGY=(history completion)
+else
+  ZSH_AUTOSUGGEST_STRATEGY=(atuin history completion)
+fi
 
 # used by atuin.zsh highlight fallback and zsh-history-substring-search
 HISTORY_SUBSTRING_SEARCH_HIGHLIGHT_FOUND='bg=#cba6f7,fg=#181825,bold'
