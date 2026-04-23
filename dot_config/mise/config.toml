@@ -1,9 +1,11 @@
 [settings]
 experimental = true
-node.corepack = true
 
 [settings.npm]
 package_manager = "pnpm"
+
+[settings.node]
+corepack = true
 
 [tools]
 bob = "latest"
