@@ -1,0 +1,2 @@
+#!/bin/zsh
+command -v eza >/dev/null 2>&1

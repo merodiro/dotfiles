@@ -32,7 +32,7 @@ aliases
 chezmoi
 gh
 extract
-eza
+eza conditional:has_eza
 git
 colored-man-pages
 npm
