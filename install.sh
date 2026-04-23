@@ -1,13 +1,8 @@
 #!/bin/sh
 set -e
 
-# Install chezmoi if not already installed
-if ! command -v chezmoi > /dev/null; then
-    sh -c "$(curl -fsLS get.chezmoi.io)" -- -b "$HOME/.local/bin"
-fi
-
-# Apply dotfiles
-chezmoi init --apply merodiro/dotfiles
+# Install chezmoi and apply dotfiles
+sh -c "$(curl -fsLS https://get.chezmoi.io)" -- init --apply merodiro
 
 # Install mise if not already installed
 if ! command -v mise > /dev/null && ! [ -x "$HOME/.local/bin/mise" ]; then
