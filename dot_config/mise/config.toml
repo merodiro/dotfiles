@@ -1,5 +1,6 @@
 [settings]
 experimental = true
+node.corepack = true
 
 [settings.npm]
 package_manager = "pnpm"
@@ -22,4 +23,3 @@ atuin = "latest"
 usage = "latest"
 "npm:@antfu/ni" = "latest"
 "forgejo:mergiraf/mergiraf" = "latest"
-
