@@ -1,15 +1,8 @@
 [settings]
 experimental = true
 
-[settings.npm]
-package_manager = "pnpm"
-
-[settings.node]
-corepack = true
-
 [tools]
 bob = "latest"
-node = "lts"
 eza = "latest"
 starship = "latest"
 ripgrep = "latest"
@@ -23,5 +16,4 @@ fzf = "latest"
 zoxide = "latest"
 atuin = "latest"
 usage = "latest"
-"npm:@antfu/ni" = "latest"
 "forgejo:mergiraf/mergiraf" = "latest"
