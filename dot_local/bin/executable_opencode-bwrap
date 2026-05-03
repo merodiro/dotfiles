@@ -139,7 +139,7 @@ exec bwrap \
   \
   --setenv HOME "$HOME" \
   --setenv USER "${USER:-$(id -un)}" \
-  --setenv npm_config_store_dir "$HOME/.local/share/pnpm/store" \
+  --setenv pnpm_config_store_dir "$HOME/.local/share/pnpm/store" \
   $( [ -n "${OPENCODE_ZED_DB:-}" ] && printf '%s' "--setenv OPENCODE_ZED_DB \"$OPENCODE_ZED_DB\" " ) \
   $( [ -n "${OPENCODE_EDITOR_SSE_PORT:-}" ] && printf '%s' "--setenv OPENCODE_EDITOR_SSE_PORT \"$OPENCODE_EDITOR_SSE_PORT\" " ) \
   $( [ -n "${CLAUDE_CODE_SSE_PORT:-}" ] && printf '%s' "--setenv CLAUDE_CODE_SSE_PORT \"$CLAUDE_CODE_SSE_PORT\" " ) \

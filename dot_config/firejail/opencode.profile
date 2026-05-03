@@ -127,7 +127,7 @@ whitelist ${HOME}/.local/share/com.gitbutler.app
 
 # Force pnpm to use the global content-addressable store rather than falling
 # back to a project-local .pnpm-store inside the sandbox.
-env npm_config_store_dir=${HOME}/.local/share/pnpm/store
+env pnpm_config_store_dir=${HOME}/.local/share/pnpm/store
 
 # ============================================================================
 # NETWORK
@@ -151,4 +151,3 @@ private-etc @tls-ca,@network,hostname,localtime,mime.types,services,passwd,group
 
 dbus-user none
 dbus-system none
-
