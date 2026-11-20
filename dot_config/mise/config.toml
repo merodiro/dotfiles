@@ -1,6 +1,14 @@
 [settings]
 experimental = true
 
+[bootstrap.packages]
+# Unprefixed: mise picks apt/dnf/pacman/zypper/apk, whichever is available.
+# macOS ships zsh at /bin/zsh, so no package is needed there.
+zsh = { os = "linux" }
+
+[bootstrap.user]
+login_shell = "zsh"
+
 [tools]
 bob = "latest"
 eza = "latest"
